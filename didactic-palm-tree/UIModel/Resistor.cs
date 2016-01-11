@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows;
 
 namespace didactic_palm_tree.UIModel
 {
     [Table("Resistor")]
-    public class Resistor
+    public class Resistor : IComponent
     {
         public Resistor(int Resistance)
         {
@@ -19,6 +20,11 @@ namespace didactic_palm_tree.UIModel
         public int Resistance
         {
             get; private set;
+        }
+
+        public Point GetPosition()
+        {
+            return new Point(0, 0);
         }
     }
 }
