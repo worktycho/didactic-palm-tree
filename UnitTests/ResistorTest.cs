@@ -10,7 +10,7 @@ namespace UnitTests
         [TestMethod]
         public void ResistorExists()
         {
-            Resistor test = new Resistor();
+            Resistor test = new Resistor(3);
         }
     }
 }

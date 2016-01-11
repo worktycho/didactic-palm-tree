@@ -8,5 +8,8 @@ namespace didactic_palm_tree.UIModel
 {
     public class Resistor
     {
+        public Resistor(int Resistance)
+        {
+        }
     }
 }
