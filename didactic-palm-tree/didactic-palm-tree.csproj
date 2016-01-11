@@ -76,6 +76,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Simulation\Battery.cs" />
+    <Compile Include="Simulation\IComponent.cs" />
+    <Compile Include="Simulation\IConnection.cs" />
+    <Compile Include="Simulation\ITerminal.cs" />
+    <Compile Include="Simulation\NetList.cs" />
+    <Compile Include="Simulation\Resistor.cs" />
     <Compile Include="UIModel\Diagram.cs" />
     <Compile Include="UIModel\IComponent.cs" />
     <Compile Include="UIModel\Resistor.cs" />
