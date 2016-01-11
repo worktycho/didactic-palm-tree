@@ -1,0 +1,6 @@
+﻿<Window x:Class="didactic_palm_tree.Components.BulbView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BulbView" Height="300" Width="300">
+    <Image Source="pack://application:,,,/Resources/Lamp.png" />
+</Window>
