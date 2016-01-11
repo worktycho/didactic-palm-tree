@@ -10,6 +10,11 @@ namespace didactic_palm_tree.UIModel
     {
         public Resistor(int Resistance)
         {
+            this.Resistance = Resistance;
         }
+
+        public int Resistance
+        {
+            get; private set; }
     }
 }

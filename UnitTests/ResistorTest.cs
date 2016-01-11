@@ -12,5 +12,18 @@ namespace UnitTests
         {
             Resistor test = new Resistor(3);
         }
+
+        [TestMethod]
+        public void Resitance()
+        {
+            Resistor test = new Resistor(3);
+            Assert.AreEqual(test.Resistance, 3);
+        }
+        [TestMethod]
+        public void Resitance2()
+        {
+            Resistor test = new Resistor(1);
+            Assert.AreEqual(test.Resistance, 1);
+        }
     }
 }
