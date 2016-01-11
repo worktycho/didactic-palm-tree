@@ -69,6 +69,21 @@ namespace UnitTests
             Diagram test2 = Diagram.Load("test.sql");
             Assert.AreEqual(test2.GetComponent(new Point(0, 0)), testComponent);
         }
+        [TestMethod]
+        [TestCategory("UIModel.Diagram")]
+        public void DiagramAddSave2AndRetrive()
+        {
+            Diagram test = Diagram.CreateNew("test.sql");
+            didactic_palm_tree.UIModel.IComponent testComponent = new TestComponent(0, 0);
+            test.Add(testComponent);
+            test.Save();
+            Diagram test2 = Diagram.CreateNew("test2.sql");
+            didactic_palm_tree.UIModel.IComponent testComponent2 = new TestComponent(1, 1);
+            test2.Add(testComponent2);
+            test2.Save();
+            Diagram test3 = Diagram.Load("test.sql");
+            Assert.AreEqual(test3.GetComponent(new Point(0, 0)), testComponent);
+        }
     }
 
     public class TestComponent : didactic_palm_tree.UIModel.IComponent
