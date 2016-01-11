@@ -76,6 +76,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UIModel\Diagram.cs" />
+    <Compile Include="UIModel\IComponent.cs" />
     <Compile Include="UIModel\Resistor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
