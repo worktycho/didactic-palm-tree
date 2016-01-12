@@ -47,7 +47,7 @@ namespace UnitTests
             test.Add(component);
             var component2 = new SimTestComponent(2);
             test.Add(component2);
-            test.AddConnection(component.Bottom, component.Top);
+            test.AddConnection(component.Bottom, component2.Top);
             test.Simulate();
             Assert.AreEqual(NetList.GetVoltageDrop(component.Top, component2.Bottom), 3);
         }
@@ -75,6 +75,18 @@ namespace UnitTests
             test.Simulate();
             Assert.AreEqual(NetList.GetVoltageDrop(component.Top, component2.Bottom), 4);
         }
+        [TestMethod]
+        public void GetVoltageTwoComponent4()
+        {
+            var test = new NetList();
+            var component = new SimTestComponent(3);
+            test.Add(component);
+            var component2 = new SimTestComponent(3);
+            test.Add(component2);
+            test.AddConnection(component.Bottom, component2.Top);
+            test.Simulate();
+            Assert.AreEqual(NetList.GetVoltageDrop(component.Top, component2.Bottom), 6);
+        }
     }
 
     internal class SimTestComponent : IComponent
@@ -89,7 +101,7 @@ namespace UnitTests
             Bottom = new Terminal(0, this);
         }
 
-        public int GetVoltageDrop()
+        public double GetVoltageDrop()
         {
             return _voltage;
         }
@@ -107,7 +119,7 @@ namespace UnitTests
             _component = simTestComponent;
         }
 
-        public int Voltage { get; set; }
+        public double Voltage { get; set; }
         public IConnection GetConnection()
         {
             return new Connection();

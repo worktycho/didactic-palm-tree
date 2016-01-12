@@ -18,18 +18,13 @@ namespace didactic_palm_tree.Simulation
         {
         }
 
-        public static int GetVoltageDrop(ITerminal top, object bottom)
+        public static double GetVoltageDrop(ITerminal top, object bottom)
         {
-            if (top.GetComponent().Bottom.Voltage == 4)
-                return 4;
-            if (top.GetComponent().GetVoltageDrop() == 1)
-                return 3;
-            return 5;
+            return top.GetComponent().Bottom.Voltage;
         }
 
         public void AddConnection(ITerminal top, ITerminal bottom)
         {
-            //top.GetConnection().AddTerminal(bottom);
             top.Voltage = top.GetComponent().GetVoltageDrop() + bottom.GetComponent().GetVoltageDrop();
         }
     }
