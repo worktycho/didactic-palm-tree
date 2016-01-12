@@ -19,10 +19,11 @@ namespace didactic_palm_tree.components
     /// </summary>
     public partial class Battery : Window
     {
-        public Battery()
+        public Battery(UIModel.Battery model)
         {
             InitializeComponent();
-            
+            VoltageLabel.Content = model.Voltage;
+            CurrentLabel.Content = model.Current;
         }
     }
 }
