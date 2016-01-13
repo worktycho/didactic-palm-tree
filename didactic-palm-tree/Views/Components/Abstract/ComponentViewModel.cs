@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using DiagramDesigner;
 
-namespace didactic_palm_tree.Abstract
+namespace didactic_palm_tree.Views.Components.Abstract
 {
     abstract class ComponentViewModel : DesignerItemViewModelBase
     {

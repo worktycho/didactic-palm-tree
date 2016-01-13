@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
-using didactic_palm_tree.Abstract;
 
-namespace didactic_palm_tree.Battery
+namespace didactic_palm_tree.Views.Components.ViewModels
 {
     class BatteryViewModel : ComponentViewModel
     {

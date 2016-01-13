@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using didactic_palm_tree.Views.Components.ViewModels;
 using DiagramDesigner.Helpers;
-using didactic_palm_tree.Battery;
 
-namespace didactic_palm_tree
+namespace didactic_palm_tree.Views
 {
     public class ToolBoxViewModel
     {

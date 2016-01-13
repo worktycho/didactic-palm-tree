@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using didactic_palm_tree.Views;
+using DiagramDesigner;
 
 namespace didactic_palm_tree
 {
