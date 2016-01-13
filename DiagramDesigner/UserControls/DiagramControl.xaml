@@ -232,7 +232,7 @@
 
 
             </ScrollViewer>
-            <s:ZoomBox x:Name="zoomBox"
+            <c:ZoomBox x:Name="zoomBox"
                        Width="180"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"

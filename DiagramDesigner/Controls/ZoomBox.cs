@@ -2,11 +2,13 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Media;
 using System.Windows.Input;
+using System.Windows.Media;
 
-namespace DiagramDesigner
+namespace DiagramDesigner.Controls
 {
+    [TemplatePart(Name = "Part_ZoomThumb", Type = typeof(Thumb))]
+    [TemplatePart(Name = "Part_ZoomCanvas", Type = typeof(Canvas))]
     public class ZoomBox : Control
     {
         private Thumb zoomThumb;
@@ -139,6 +141,13 @@ namespace DiagramDesigner
 
         private void InvalidateScale(out double scale, out double xOffset, out double yOffset)
         {
+            if (scaleTransform == null)
+            {
+                scale = 0;
+                xOffset = 0;
+                yOffset = 0;
+                return;
+            }
             double w = DesignerCanvas.ActualWidth * this.scaleTransform.ScaleX;
             double h = DesignerCanvas.ActualHeight * this.scaleTransform.ScaleY;
 
