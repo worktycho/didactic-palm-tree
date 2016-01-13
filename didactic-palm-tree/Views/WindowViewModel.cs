@@ -13,6 +13,9 @@ namespace didactic_palm_tree.Views
 {
     public class WindowViewModel : INPCBase
     {
+        public ToolBoxViewModel ToolBoxViewModel { get; set; }
+        public DiagramViewModel DiagramViewModel { get; set; }
+
         public WindowViewModel()
         {
             ToolBoxViewModel = new ToolBoxViewModel();
@@ -20,8 +23,5 @@ namespace didactic_palm_tree.Views
 
             DiagramViewModel.CreateNewDiagramCommand.Execute(null);
         }
-
-        public ToolBoxViewModel ToolBoxViewModel { get; set; }
-        public DiagramViewModel DiagramViewModel { get; set; }
     }
 }
