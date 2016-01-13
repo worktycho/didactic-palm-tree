@@ -22,6 +22,8 @@ namespace didactic_palm_tree.Views
             DiagramViewModel = new DiagramViewModel();
 
             DiagramViewModel.CreateNewDiagramCommand.Execute(null);
+
+            ConnectorViewModel.PathFinder = new OrthogonalPathFinder();
         }
     }
 }
