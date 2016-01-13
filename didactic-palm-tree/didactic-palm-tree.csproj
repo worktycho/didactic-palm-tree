@@ -131,7 +131,7 @@
     <Compile Include="UIModel\Resistor.cs" />
     <Compile Include="Views\Components\Abstract\ComponentData.cs" />
     <Compile Include="Views\Components\Abstract\ComponentViewModel.cs" />
-    <Compile Include="Views\Components\Data\BatterData.cs" />
+    <Compile Include="Views\Components\Data\BatteryData.cs" />
     <Compile Include="Views\Components\Data\VoltmeterData.cs" />
     <Compile Include="Views\Components\Data\WireData.cs" />
     <Compile Include="Views\Components\Data\BulbData.cs" />
@@ -233,7 +233,6 @@
   <ItemGroup>
     <Resource Include="Resources\Ammeter.PNG" />
     <Resource Include="Resources\Battery.PNG" />
-    <Resource Include="Resources\Cell.PNG" />
     <Resource Include="Resources\Lamp.PNG" />
     <Resource Include="Resources\Resistor.PNG" />
     <Resource Include="Resources\Switch.PNG" />

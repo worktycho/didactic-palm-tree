@@ -9,7 +9,7 @@
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="Resources/Battery.PNG"
+                    Source="../../Resources/Battery.PNG"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
