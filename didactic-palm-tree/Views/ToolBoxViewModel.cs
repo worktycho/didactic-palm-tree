@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using DiagramDesigner.Helpers;
 using didactic_palm_tree.Battery;
 
-namespace didactic_palm_tree.Views
+namespace didactic_palm_tree
 {
-    class ToolBoxViewModel
+    public class ToolBoxViewModel
     {
         private List<ToolBoxData> toolBoxItems = new List<ToolBoxData>();
 

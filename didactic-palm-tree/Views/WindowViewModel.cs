@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
-using DiagramDesigner.Helpers;
-using DiagramDesigner;
 using System.ComponentModel;
 using System.Windows.Data;
-using DemoApp.Persistence.Common;
 using System.Threading.Tasks;
-using DemoApp;
+using didactic_palm_tree.Views;
+using DiagramDesigner;
 
 namespace didactic_palm_tree.Views
 {
-    public class WindowViewModel : Window1ViewModel
-    {       
+    public class WindowViewModel : INPCBase
+    {
+        public WindowViewModel()
+        {
+            ToolBoxViewModel = new ToolBoxViewModel();
+            DiagramViewModel = new DiagramViewModel();
 
+            DiagramViewModel.CreateNewDiagramCommand.Execute(null);
+        }
+
+        public ToolBoxViewModel ToolBoxViewModel { get; set; }
+        public DiagramViewModel DiagramViewModel { get; set; }
     }
 }
