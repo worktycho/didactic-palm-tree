@@ -2,17 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewmodels="clr-namespace:didactic_palm_tree.Views.Components.ViewModels"
                     xmlns:data="clr-namespace:didactic_palm_tree.Views.Components.Data">
-    
+
     <!-- DataTemplate for DesignerCanvas look and feel -->
     <DataTemplate DataType="{x:Type viewmodels:BatteryViewModel}">
         <Grid>
             <Image IsHitTestVisible="False"
-                    Stretch="Fill"
-                    Source="../../../Resources/Battery.PNG"
-                    Tag="setting" />
+                   Stretch="Fill"
+                   Source="../../../Resources/Battery.png"
+                   Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="5" />
+                    Margin="5"
+                    Template="{StaticResource infoButtonTemplate}" 
+                    Command="{Binding ShowDataChangeWindowCommand}" />
         </Grid>
     </DataTemplate>
 
@@ -25,12 +27,14 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0"
-                    Content="Setting1"
-                    Margin="5" />
+                   Content="HostUrl"
+                   Margin="5" />
             <TextBox Grid.Row="1"
-                        HorizontalAlignment="Left"
-                        Width="150"
-                        Margin="5" />
+                    HorizontalAlignment="Left"
+                    Text="{Binding HostUrl}"
+                    Width="150"
+                    Margin="5" />
         </Grid>
     </DataTemplate>
+
 </ResourceDictionary>

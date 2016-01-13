@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Windows.Input;
+using didactic_palm_tree.Views.Util;
 using DiagramDesigner;
 
 namespace didactic_palm_tree.Views.Components.Abstract
 {
     abstract class ComponentViewModel : DesignerItemViewModelBase
     {
-        //private IUIVisualizerService visualizerService;
+        private IUIVisualizerService visualizerService;
 
         public ComponentViewModel()
         {
@@ -20,29 +22,29 @@ namespace didactic_palm_tree.Views.Components.Abstract
             Init();
         }
 
-        public ComponentViewModel(int id, DiagramViewModel parent, double left, double top, string setting)
+        public ComponentViewModel(int id, DiagramViewModel parent, double left, double top)
         {
             this.Id = id;
             this.Parent = parent;
             this.Left = left;
             this.Top = top;
-            this.Setting = setting;
             Init();
         }
 
-        public String Setting { get; set; }
-        //public ICommand ShowDataChangeWindowCommand { get; private set; }
+        public ICommand ShowDataChangeWindowCommand { get; private set; }
+
         private void Init()
         {
-            //visualizerService = ApplicationServicesProvider.Instance.Provider.VisualizerService;
-            //ShowDataChangeWindowCommand = new SimpleCommand(ExecuteShowDataChangeWindowCommand);
+            visualizerService = ApplicationServicesProvider.Instance.Provider.VisualizerService;
+            ShowDataChangeWindowCommand = new SimpleCommand(ExecuteShowDataChangeWindowCommand);
             this.ShowConnectors = false;
         }
 
+        public abstract void ExecuteShowDataChangeWindowCommand(object paramter);
+
         protected bool OnConfirmation(ComponentData data)
         {
-            return true;
-            //return (visualizerService.ShowDialog(data) == true);
+            return (visualizerService.ShowDialog(data) == true);
         } 
     }
 }

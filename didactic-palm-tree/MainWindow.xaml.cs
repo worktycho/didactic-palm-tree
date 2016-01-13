@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using didactic_palm_tree.Views;
+using didactic_palm_tree.Views.Components.ViewModels;
 using DiagramDesigner;
 
 namespace didactic_palm_tree
@@ -31,6 +32,12 @@ namespace didactic_palm_tree
 
             WindowViewModel = new WindowViewModel();
             this.DataContext = WindowViewModel;
+        }
+
+        void WindowLoaded(object paraameter)
+        {
+            BatteryViewModel battery = new BatteryViewModel(WindowViewModel.DiagramViewModel, 100, 100);
+            WindowViewModel.DiagramViewModel.Items.Add(battery);
         }
     }
 }
