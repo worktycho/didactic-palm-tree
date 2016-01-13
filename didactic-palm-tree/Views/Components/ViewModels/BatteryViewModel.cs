@@ -15,5 +15,10 @@ namespace didactic_palm_tree.Battery
         {
 
         }
+
+        public BatteryViewModel()
+        {
+            
+        }
     }
 }

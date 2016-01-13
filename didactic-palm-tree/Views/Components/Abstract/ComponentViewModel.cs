@@ -12,6 +12,11 @@ namespace didactic_palm_tree.Abstract
     {
         //private IUIVisualizerService visualizerService;
 
+        public ComponentViewModel()
+        {
+            Init();
+        }
+
         public ComponentViewModel(DiagramViewModel parent, double left, double top)
         {
             this.Parent = parent;
