@@ -239,7 +239,7 @@
     <Folder Include="Views\Util\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DiagramDesignerMVVM\DiagramDesignerMVVM\DiagramDesigner\DiagramDesigner.csproj">
+    <ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj">
       <Project>{74872a86-6809-476b-95ab-6f3512317059}</Project>
       <Name>DiagramDesigner</Name>
     </ProjectReference>

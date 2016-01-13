@@ -18,7 +18,7 @@
 
             <!-- ToolBox Control -->
             <local:ToolBoxControl Grid.Column="0"
-                                  DataContext="{Binding (views:WindowViewModel.ToolBoxViewModel)}" />
+                                  DataContext="{Binding ToolBoxViewModel}" />
 
             <GridSplitter Grid.Column="1"
 						  HorizontalAlignment="Left"
@@ -28,7 +28,7 @@
 
             <!-- Diagram Control -->
             <s:DiagramControl Grid.Column="1"
-                              DataContext="{Binding (views:WindowViewModel.DiagramViewModel)}"
+                              DataContext="{Binding DiagramViewModel}"
                               Margin="3,1,0,0" />
         </Grid>
     </DockPanel>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:s="clr-namespace:DiagramDesigner;assembly=DiagramDesigner"
+             xmlns:helpers="clr-namespace:DiagramDesigner.Helpers;assembly=DiagramDesigner"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -53,7 +54,7 @@
                                    Stretch="Fill"
                                    Width="50"
                                    Height="50"
-                                   Source="{Binding ImageUrl, Converter={x:Static s:ImageUrlConverter.Instance}}" />
+                                   Source="{Binding (helpers:ToolBoxData.ImageUrl), Converter={x:Static s:ImageUrlConverter.Instance}}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
