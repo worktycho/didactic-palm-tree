@@ -1,25 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DemoApp"
-                    xmlns:views="clr-namespace::">
+                    xmlns:viewmodels="clr-namespace:didactic_palm_tree.Views.Components.ViewModels"
+                    xmlns:data="clr-namespace:didactic_palm_tree.Views.Components.Data">
     
     <!-- DataTemplate for DesignerCanvas look and feel -->
-    <DataTemplate DataType="{x:Type local:SettingsDesignerItemViewModel}">
+    <DataTemplate DataType="{x:Type viewmodels:BatteryViewModel}">
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../Resources/Battery.png"
+                    Source="Resources/Battery.PNG"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="5"
-                    Template="{StaticResource infoButtonTemplate}"
-                    Command="{Binding ShowDataChangeWindowCommand}" />
+                    Margin="5" />
         </Grid>
     </DataTemplate>
 
     <!-- DataTemplate for Popup look and feel -->
-    <DataTemplate DataType="{x:Type local:SettingsDesignerItemData}">
+    <DataTemplate DataType="{x:Type data:BatteryData}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -31,7 +30,6 @@
                     Margin="5" />
             <TextBox Grid.Row="1"
                         HorizontalAlignment="Left"
-                        Text="{Binding Setting1}"
                         Width="150"
                         Margin="5" />
         </Grid>
