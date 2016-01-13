@@ -3,14 +3,14 @@ using DiagramDesigner;
 
 namespace didactic_palm_tree.Views.Components.ViewModels
 {
-    class ResistorViewModel : ComponentViewModel
+    class SwitchViewModel : ComponentViewModel
     {
-        public ResistorViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
+        public SwitchViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
         {
 
         }
 
-        public ResistorViewModel()
+        public SwitchViewModel()
         {
 
         }

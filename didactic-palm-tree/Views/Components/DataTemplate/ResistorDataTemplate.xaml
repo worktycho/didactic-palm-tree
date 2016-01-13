@@ -8,7 +8,7 @@
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../../Resources/Resistor.PNG"
+                    Source="../../../Resources/Resistor.png"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"

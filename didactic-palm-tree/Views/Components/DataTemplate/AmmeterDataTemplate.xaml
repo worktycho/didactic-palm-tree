@@ -8,7 +8,7 @@
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../../Resources/Ammeter.PNG"
+                    Source="../../../Resources/Ammeter.png"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"

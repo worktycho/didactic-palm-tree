@@ -133,6 +133,7 @@
     <Compile Include="Views\Components\Abstract\ComponentViewModel.cs" />
     <Compile Include="Views\Components\Data\BatteryData.cs" />
     <Compile Include="Views\Components\Data\VoltmeterData.cs" />
+    <Compile Include="Views\Components\Data\SwitchData.cs" />
     <Compile Include="Views\Components\Data\WireData.cs" />
     <Compile Include="Views\Components\Data\BulbData.cs" />
     <Compile Include="Views\Components\Data\AmmeterData.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Views\Components\ViewModels\AmmeterViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\BulbViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\ResistorViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\SwitchViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\VoltmeterViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\WireViewModel.cs" />
     <Compile Include="Views\ToolBoxViewModel.cs" />
@@ -182,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\SwitchDataTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -247,12 +253,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Ammeter.PNG" />
-    <Resource Include="Resources\Battery.PNG" />
-    <Resource Include="Resources\Lamp.PNG" />
-    <Resource Include="Resources\Resistor.PNG" />
-    <Resource Include="Resources\Switch.PNG" />
-    <Resource Include="Resources\Voltmeter.PNG" />
+    <Resource Include="Resources\Ammeter.png" />
+    <Resource Include="Resources\Battery.png" />
+    <Resource Include="Resources\Resistor.png" />
+    <Resource Include="Resources\Switch_Off.png" />
+    <Resource Include="Resources\Voltmeter.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Controls\" />
@@ -268,8 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Bulb_Off.png" />
-    <Resource Include="Resources\Bulb_On.jpg" />
-    <Resource Include="Resources\Switch_Off.png" />
+    <Content Include="Resources\Bulb_On.png" />
     <Resource Include="Resources\Switch_On.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

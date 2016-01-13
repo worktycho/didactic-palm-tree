@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="Views/Components/DataTemplate/BatteryDataTemplate.xaml" />
                 <ResourceDictionary Source="Views/Components/DataTemplate/BulbDataTemplate.xaml" />
                 <ResourceDictionary Source="Views/Components/DataTemplate/ResistorDataTemplate.xaml" />
+                <ResourceDictionary Source="Views/Components/DataTemplate/SwitchDataTemplate.xaml" />
                 <ResourceDictionary Source="Views/Components/DataTemplate/VoltmeterDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
