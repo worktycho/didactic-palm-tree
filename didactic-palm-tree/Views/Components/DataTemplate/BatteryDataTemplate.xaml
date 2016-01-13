@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:DemoApp"
                     xmlns:viewmodels="clr-namespace:didactic_palm_tree.Views.Components.ViewModels"
                     xmlns:data="clr-namespace:didactic_palm_tree.Views.Components.Data">
     
@@ -9,7 +8,7 @@
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../Resources/Battery.PNG"
+                    Source="../../../Resources/Battery.PNG"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
