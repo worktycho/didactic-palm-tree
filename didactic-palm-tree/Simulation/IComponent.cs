@@ -2,7 +2,9 @@
 {
     public interface IComponent
     {
-        int GetVoltageDrop();
-        ITerminal Bottom { get; set; }
+        double GetVoltageDrop();
+        ITerminal Bottom { get; }
+        ITerminal Top { get; }
+        double GetResistance();
     }
 }
