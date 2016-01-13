@@ -13,13 +13,16 @@ namespace didactic_palm_tree.Simulation
         public Resistor(int v)
         {
             this.Resistance = v;
+            this.Top = new Terminal(this);
+            this.Bottom = new Terminal(this);
         }
 
         public double GetVoltageDrop()
         {
-            return 1.0/Resistance;
+            return (Top.Voltage - Bottom.Voltage)/Resistance;
         }
 
         public ITerminal Bottom { get; set; }
+        public ITerminal Top { get; set; }
     }
 }

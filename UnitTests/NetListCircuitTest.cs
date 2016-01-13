@@ -15,6 +15,8 @@ namespace UnitTests
             var test = new NetList();
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
+            test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
+            test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
             test.Simulate();
             Assert.AreEqual(1, testResistComponent.GetVoltageDrop());
         }
@@ -26,8 +28,23 @@ namespace UnitTests
             var test = new NetList();
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
+            test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
+            test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
             test.Simulate();
             Assert.AreEqual(0.5, testResistComponent.GetVoltageDrop());
+        }
+        [TestMethod]
+        public void TestSingleResistors3()
+        {
+            var testResistComponent = new Resistor(1);
+            var testBatteryComponent = new Battery(2);
+            var test = new NetList();
+            test.Add(testResistComponent);
+            test.Add(testBatteryComponent);
+            test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
+            test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
+            test.Simulate();
+            Assert.AreEqual(2, testResistComponent.GetVoltageDrop());
         }
     }
 

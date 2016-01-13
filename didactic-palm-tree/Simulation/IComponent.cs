@@ -3,6 +3,8 @@
     public interface IComponent
     {
         double GetVoltageDrop();
-        ITerminal Bottom { get; set; }
+        ITerminal Bottom { get; }
+        ITerminal Top { get; }
+        double GetResistance();
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="Simulation\ITerminal.cs" />
     <Compile Include="Simulation\NetList.cs" />
     <Compile Include="Simulation\Resistor.cs" />
+    <Compile Include="Simulation\Terminal.cs" />
     <Compile Include="UIModel\Battery.cs" />
     <Compile Include="UIModel\Diagram.cs" />
     <Compile Include="UIModel\IComponent.cs" />
