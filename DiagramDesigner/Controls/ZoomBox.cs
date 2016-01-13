@@ -122,6 +122,7 @@ namespace DiagramDesigner.Controls
         private void DesignerCanvas_LayoutUpdated(object sender, EventArgs e)
         {
             double scale, xOffset, yOffset;
+            if (scaleTransform == null) return;
             this.InvalidateScale(out scale, out xOffset, out yOffset);
             this.zoomThumb.Width = this.ScrollViewer.ViewportWidth * scale;
             this.zoomThumb.Height = this.ScrollViewer.ViewportHeight * scale;
@@ -141,13 +142,6 @@ namespace DiagramDesigner.Controls
 
         private void InvalidateScale(out double scale, out double xOffset, out double yOffset)
         {
-            if (scaleTransform == null)
-            {
-                scale = 0;
-                xOffset = 0;
-                yOffset = 0;
-                return;
-            }
             double w = DesignerCanvas.ActualWidth * this.scaleTransform.ScaleX;
             double h = DesignerCanvas.ActualHeight * this.scaleTransform.ScaleY;
 
