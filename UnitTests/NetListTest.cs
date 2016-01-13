@@ -92,7 +92,6 @@ namespace UnitTests
     internal class SimTestComponent : IComponent
     {
         private readonly int _voltage;
-        public readonly ITerminal Top;
 
         public SimTestComponent(int voltage)
         {
@@ -106,7 +105,12 @@ namespace UnitTests
             return _voltage;
         }
 
-        public ITerminal Bottom { get; set; }
+        public ITerminal Bottom { get; }
+        public ITerminal Top { get; }
+        public double GetResistance()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class Terminal : ITerminal
@@ -135,6 +139,11 @@ namespace UnitTests
     {
         public void AddTerminal(ITerminal bottom)
         {
+        }
+
+        public IEnumerable<IComponent> GetConnectedComponents()
+        {
+            throw new NotImplementedException();
         }
     }
 }

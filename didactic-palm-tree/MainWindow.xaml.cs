@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using didactic_palm_tree.Views;
+using DiagramDesigner;
 
 namespace didactic_palm_tree
 {
@@ -20,9 +23,14 @@ namespace didactic_palm_tree
     /// </summary>
     public partial class MainWindow : Window
     {
+        public WindowViewModel WindowViewModel { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            WindowViewModel = new WindowViewModel();
+            this.DataContext = WindowViewModel;
         }
     }
 }

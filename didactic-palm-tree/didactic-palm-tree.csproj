@@ -111,6 +111,13 @@
     <Compile Include="Components\VoltmeterView.xaml.cs">
       <DependentUpon>VoltmeterView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ToolBoxControl.xaml.cs">
+      <DependentUpon>ToolBoxControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Simulation\Battery.cs" />
     <Compile Include="Simulation\IComponent.cs" />
     <Compile Include="Simulation\IConnection.cs" />
@@ -122,6 +129,22 @@
     <Compile Include="UIModel\Diagram.cs" />
     <Compile Include="UIModel\IComponent.cs" />
     <Compile Include="UIModel\Resistor.cs" />
+    <Compile Include="Views\Components\Abstract\ComponentData.cs" />
+    <Compile Include="Views\Components\Abstract\ComponentViewModel.cs" />
+    <Compile Include="Views\Components\Data\BatterData.cs" />
+    <Compile Include="Views\Components\Data\VoltmeterData.cs" />
+    <Compile Include="Views\Components\Data\WireData.cs" />
+    <Compile Include="Views\Components\Data\BulbData.cs" />
+    <Compile Include="Views\Components\Data\AmmeterData.cs" />
+    <Compile Include="Views\Components\Data\ResistorData.cs" />
+    <Compile Include="Views\Components\ViewModels\BatteryViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\AmmeterViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\BulbViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\ResistorViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\VoltmeterViewModel.cs" />
+    <Compile Include="Views\Components\ViewModels\WireViewModel.cs" />
+    <Compile Include="Views\ToolBoxViewModel.cs" />
+    <Compile Include="Views\WindowViewModel.cs" />
     <Page Include="Components\AmmeterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,18 +165,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\WireDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\VoltmeterDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\ResistorDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\AmmeterDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\BulbDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\DataTemplate\BatteryDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -191,6 +238,16 @@
     <Resource Include="Resources\Resistor.PNG" />
     <Resource Include="Resources\Switch.PNG" />
     <Resource Include="Resources\Voltmeter.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Controls\" />
+    <Folder Include="Views\Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj">
+      <Project>{74872a86-6809-476b-95ab-6f3512317059}</Project>
+      <Name>DiagramDesigner</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="StarMath.XML" />

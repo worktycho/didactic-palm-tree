@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "didactic-palm-tree", "didac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9871688D-9413-45F8-9F15-F3466C5E654A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramDesigner", "DiagramDesigner\DiagramDesigner.csproj", "{74872A86-6809-476B-95AB-6F3512317059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCustomControlLibrary1", "WpfCustomControlLibrary1\WpfCustomControlLibrary1.csproj", "{B5ED6AD0-20E8-4DDF-A810-FD1B2422BCBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9871688D-9413-45F8-9F15-F3466C5E654A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9871688D-9413-45F8-9F15-F3466C5E654A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9871688D-9413-45F8-9F15-F3466C5E654A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74872A86-6809-476B-95AB-6F3512317059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74872A86-6809-476B-95AB-6F3512317059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74872A86-6809-476B-95AB-6F3512317059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74872A86-6809-476B-95AB-6F3512317059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5ED6AD0-20E8-4DDF-A810-FD1B2422BCBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5ED6AD0-20E8-4DDF-A810-FD1B2422BCBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5ED6AD0-20E8-4DDF-A810-FD1B2422BCBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5ED6AD0-20E8-4DDF-A810-FD1B2422BCBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

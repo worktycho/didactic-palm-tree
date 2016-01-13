@@ -24,5 +24,9 @@ namespace didactic_palm_tree.Simulation
 
         public ITerminal Bottom { get; set; }
         public ITerminal Top { get; set; }
+        public double GetResistance()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

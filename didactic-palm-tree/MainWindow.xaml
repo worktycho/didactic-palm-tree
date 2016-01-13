@@ -1,8 +1,39 @@
 ﻿<Window x:Class="didactic_palm_tree.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        xmlns:local="clr-namespace:didactic_palm_tree"
+        xmlns:views="clr-namespace:didactic_palm_tree.Views"
+        xmlns:s="clr-namespace:DiagramDesigner;assembly=DiagramDesigner"
+        WindowState="Maximized"
+        SnapsToDevicePixels="True"
+        Title="Didactic Palm Tree"
+        Height="350" Width="525">
+
+    <Window.DataContext>
+        <views:WindowViewModel />
+    </Window.DataContext>
+    
+    <DockPanel Margin="0">
+        <Grid Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!-- ToolBox Control -->
+            <local:ToolBoxControl Grid.Column="0"
+                                  DataContext="{Binding ToolBoxViewModel}" />
+
+            <GridSplitter Grid.Column="1"
+						  HorizontalAlignment="Left"
+						  VerticalAlignment="Stretch"
+						  Background="Transparent"
+						  Width="3" />
+
+            <!-- Diagram Control -->
+            <s:DiagramControl Grid.Column="1"
+                              DataContext="{Binding DiagramViewModel}"
+                              Margin="3,1,0,0" />
+        </Grid>
+    </DockPanel>
 </Window>
