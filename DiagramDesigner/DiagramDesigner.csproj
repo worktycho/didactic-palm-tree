@@ -96,9 +96,6 @@
     <Compile Include="Helpers\PointHelper.cs" />
     <Compile Include="Messenger\Mediator.cs" />
     <Compile Include="Messenger\MediatorMessageSinkAttribute.cs" />
-    <Compile Include="UserControls\DiagramControl.xaml.cs">
-      <DependentUpon>DiagramControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\ConnectorInfoBase.cs" />
     <Compile Include="Converters\ImageUrlConverter.cs" />
     <Compile Include="Helpers\DragObject.cs" />
@@ -115,10 +112,6 @@
     <Compile Include="ViewModels\SimpleCommand.cs" />
     <Compile Include="Controls\ZoomBox.cs" />
     <Page Include="Resources\Styles\DesignerItems.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\DiagramControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -209,6 +202,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

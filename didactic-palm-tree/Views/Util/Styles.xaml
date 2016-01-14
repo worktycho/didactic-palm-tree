@@ -93,7 +93,6 @@
 
     <!-- ItemControl Styling -->
     <Style x:Key="ItemControlTemplate"  TargetType="{x:Type ItemsControl}">
-        <Setter Property="BorderThickness" Value="1"/> "
         <Setter Property="BorderBrush" Value="DarkRed"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="White"/>

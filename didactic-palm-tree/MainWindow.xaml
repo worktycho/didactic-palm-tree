@@ -64,9 +64,10 @@
 						  Width="3" />
 
             <!-- Diagram Control -->
-            <s:DiagramControl Grid.Column="1"
+            <local:DiagramControl Grid.Column="1"
                               DataContext="{Binding DiagramViewModel}"
                               Margin="3,1,0,0" />
+            
             <!-- ToolBox Control -->
             <local:ToolBoxControl Grid.Column="0"
                                   DataContext="{Binding ToolBoxViewModel}" />

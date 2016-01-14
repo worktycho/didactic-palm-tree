@@ -11,8 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DiagramDesigner;
 
-namespace DiagramDesigner
+namespace didactic_palm_tree
 {
     /// <summary>
     /// Interaction logic for DiagramControl.xaml
@@ -25,7 +26,7 @@ namespace DiagramDesigner
         }
 
 
-        private void DesignerCanvas_Loaded(object sender, RoutedEventArgs e)
+        public void DesignerCanvas_Loaded(object sender, RoutedEventArgs e)
         {
             DesignerCanvas myDesignerCanvas = sender as DesignerCanvas;
             zoomBox.DesignerCanvas = myDesignerCanvas;
