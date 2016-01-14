@@ -109,6 +109,67 @@ namespace didactic_palm_tree.Simulation
             
         }
 
+        public SparseMatrix CreateIMatrix(List<IConnection> connections)
+        {
+            var iMatrix = new SparseMatrix(connections.Count, 1);
+            return iMatrix;
+        }
+
+        public SparseMatrix CreateEMatrix(List<IConnection> voltageSources)
+        {
+            var eMatrix = new SparseMatrix(voltageSources.Count, 1);
+            for (var i = 0; i < voltageSources.Count; i++)
+            {
+                eMatrix[i, 0] = voltageSources[i];
+            }
+            return eMatrix;
+        }
+
+        public SparseMatrix CreateZMatrix(List<IConnection> connections, List<IConnection> voltageSources)
+        {
+            var iMatrix = CreateIMatrix(connections);
+            var eMatrix = CreateEMatrix(voltageSources);
+            var zMatrix = new SparseMatrix(connections.Count + voltageSources.Count, 1);
+            var k = 0;
+            for (var i = 0; i < connections.Count; i++)
+            {
+                zMatrix[k++, 0] = iMatrix[i, 0];
+            }
+            for (var j = 0; j < voltageSources.Count; j++)
+            {
+                zMatrix[k++, 0] = eMatrix[j, 0];
+            }
+            return zMatrix;
+        }
+
+        public SparseMatrix CreateXMatrix(List<IConnection> connections, List<IConnection> voltageSources)
+        {
+            var aMatrix = CreateAMatrix(connections, voltageSources);
+            var zMatrix = CreateZMatrix(connections, voltageSources);
+            var xMatrix = aMatrix.ConvertSparseToDenseMatrix().inverse().ConvertDenseToSparseMatrix(0.0).multiply(zMatrix.ConvertSparseToDenseMatrix()).ConvertDenseToSparseMatrix();
+            return xMatrix;
+        }
+
+        public SparseMatrix CreateVMatrix(List<IConnection> connections, SparseMatrix xMatrix)
+        {
+            var vMatrix = xMatrix;
+            for (var i = 0; i < xMatrix.NumRows - connections.Count; i++)
+            {
+                vMatrix.RemoveRow(xMatrix.NumRows - i - 1);
+            }
+            return vMatrix;
+        }
+
+        public SparseMatrix CreateJMatrix(List<IConnection> voltageSources, SparseMatrix xMatrix)
+        {
+            var jMatrix = xMatrix;
+            for (var i = 0; i < xMatrix.NumRows - voltageSources.Count; i++)
+            {
+                jMatrix.RemoveRow(i);
+            }
+            return jMatrix;
+        }
+
         public static double GetVoltageDrop(ITerminal top, object bottom)
         {
             return top.GetComponent().Bottom.Voltage;
