@@ -16,6 +16,8 @@
     <Window.InputBindings>
         <KeyBinding Key="Del"
                     Command="{Binding DeleteSelectedItemsCommand}" />
+        <KeyBinding Key="Backspace"
+                    Command="{Binding DeleteSelectedItemsCommand}" />
     </Window.InputBindings>
 
     <DockPanel Margin="0">
