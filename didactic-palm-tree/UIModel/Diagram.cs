@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Data;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.SQLite;
+using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
 {
@@ -22,6 +24,7 @@ namespace didactic_palm_tree.UIModel
         }
 
         public IEnumerable<Component> Components => _context.Components;
+        public IEnumerable<Wire> Connectors => _context.Connectors;
 
         public Component Add(Component component)
         {
@@ -69,5 +72,20 @@ namespace didactic_palm_tree.UIModel
         {
             _context.SaveChanges();
         }
+
+        public void Add(Wire connector)
+        {
+
+            if (!_context.Connectors.Any(x => x.Id == connector.Id))
+            {
+                _context.Connectors.Add(connector);
+            }
+        }
+
+        internal void Remove(Wire connector)
+        {
+            _context.Connectors.Remove(connector);
+        }
+        
     }
 }
