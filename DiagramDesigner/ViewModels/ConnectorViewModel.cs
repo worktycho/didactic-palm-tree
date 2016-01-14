@@ -18,7 +18,6 @@ namespace DiagramDesigner
         private Point endPoint;
         private Rect area;
 
-
         public ConnectorViewModel(int id, IDiagramViewModel parent, 
             FullyCreatedConnectorInfo sourceConnectorInfo, FullyCreatedConnectorInfo sinkConnectorInfo) : base(id,parent)
         {
@@ -180,6 +179,9 @@ namespace DiagramDesigner
                 }
             }
         }
+
+        public int SourcePadding { get; internal set; }
+        public int TargetPadding { get; internal set; }
 
         private void UpdateArea()
         {
