@@ -7,8 +7,8 @@
              xmlns:c="clr-namespace:DiagramDesigner.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <Border BorderBrush="LightGray"
+
+        <Border BorderBrush="LightGray"
             BorderThickness="1">
         <Grid>
             <ScrollViewer Name="DesignerScrollViewer"
@@ -123,13 +123,10 @@
                                                 HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Stretch">
                                             <Polyline x:Name="poly"
-                                                        Stroke="Gray"
+                                                        Stroke="Black"
                                                         Points="{Binding Path=ConnectionPoints, Converter={x:Static s:ConnectionPathConverter.Instance}}"
-                                                        StrokeThickness="2" />
-
-
-                                            <Path x:Name="arrow"
-                                                    Data="M0,10 L5,0 10,10 z"
+                                                        StrokeThickness="3" />
+                                                <Path x:Name="arrow"
                                                     Visibility="{Binding Path=IsFullConnection, Converter={x:Static s:BoolToVisibilityConverter.Instance}}"
                                                     Fill="Gray"
                                                     HorizontalAlignment="Left"
@@ -145,6 +142,7 @@
                                                     <RotateTransform x:Name="rot" />
                                                 </Path.RenderTransform>
                                             </Path>
+               
                                         </Canvas>
                                         <DataTemplate.Triggers>
                                             <DataTrigger Value="True"

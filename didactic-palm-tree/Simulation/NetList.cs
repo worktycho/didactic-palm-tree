@@ -29,9 +29,9 @@ namespace didactic_palm_tree.Simulation
                     {
                         if (i == j) sumResists += 1.0/component.GetResistance();
                         else if ((component.Top.GetConnection() == connections[i] &&
-                                  component.Top.GetConnection() == connections[j]) ||
+                                  component.Bottom.GetConnection() == connections[j]) ||
                                  (component.Top.GetConnection() == connections[j] &&
-                                  component.Top.GetConnection() == connections[i]))
+                                  component.Bottom.GetConnection() == connections[i]))
                         {
                             sumResists += 1.0 / component.GetResistance();
                         }

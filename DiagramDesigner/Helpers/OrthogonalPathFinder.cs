@@ -19,6 +19,7 @@ namespace DiagramDesigner
         {
             List<Point> linePoints = new List<Point>();
 
+
             Rect rectSource = GetRectWithMargin(source, margin);
             Rect rectSink = GetRectWithMargin(sink, margin);
 
@@ -594,6 +595,7 @@ namespace DiagramDesigner
             {
                 Point startPoint = new Point(0, 0);
                 Point endPoint = new Point(0, 0);
+        
                 double marginPath = 15;
                 switch (source.Orientation)
                 {

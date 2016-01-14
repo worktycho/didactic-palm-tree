@@ -4,11 +4,11 @@
                     xmlns:data="clr-namespace:didactic_palm_tree.Views.Components.Data">
 
     <!-- DataTemplate for DesignerCanvas look and feel -->
-    <DataTemplate DataType="{x:Type viewmodels:BulbViewModel}">
+    <DataTemplate DataType="{x:Type viewmodels:SwitchViewModel}">
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../../Resources/Bulb_Off.png"
+                    Source="../../../Resources/Switch_Off.png"
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
@@ -17,7 +17,7 @@
     </DataTemplate>
 
     <!-- DataTemplate for Popup look and feel -->
-    <DataTemplate DataType="{x:Type data:BulbData}">
+    <DataTemplate DataType="{x:Type data:SwitchData}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

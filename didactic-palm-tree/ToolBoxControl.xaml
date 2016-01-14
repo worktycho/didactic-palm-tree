@@ -7,12 +7,15 @@
              xmlns:helpers="clr-namespace:DiagramDesigner.Helpers;assembly=DiagramDesigner"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    
     
     <Border BorderBrush="LightGray"
             BorderThickness="1">
         <StackPanel>
             <Expander Header="Symbols"
-                      IsExpanded="True">
+                      IsExpanded="True"
+                      Style="{StaticResource ExpanderTemplate}">
                 <ItemsControl ItemsSource="{Binding ToolBoxItems}">
                     <ItemsControl.Template>
                         <ControlTemplate TargetType="{x:Type ItemsControl}">

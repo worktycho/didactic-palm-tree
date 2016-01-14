@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DiagramDesigner;
+﻿using DiagramDesigner;
 
-namespace didactic_palm_tree.Abstract
+namespace didactic_palm_tree.Views.Components.Abstract
 {
-    class ComponentData : INPCBase
+    public class ComponentData : INPCBase
     {
         
     }

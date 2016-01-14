@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using didactic_palm_tree.Views.Components.Abstract;
+using DiagramDesigner;
 
-namespace didactic_palm_tree.Views.Components
+namespace didactic_palm_tree.Views.Components.ViewModels
 {
-    class AmmeterViewModel
+    public class AmmeterViewModel : ComponentViewModel
     {
+        public AmmeterViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
+        {
+
+        }
+
+        public AmmeterViewModel()
+        {
+
+        }
+
+        public override void ExecuteShowDataChangeWindowCommand(object paramter)
+        {
+            
+        }
     }
 }

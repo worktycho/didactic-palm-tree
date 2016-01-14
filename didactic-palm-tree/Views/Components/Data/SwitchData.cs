@@ -2,8 +2,8 @@
 
 namespace didactic_palm_tree.Views.Components.Data
 {
-    class VoltmeterData : ComponentData
+    class SwitchData : ComponentData
     {
-        public float Voltage { get; set; }
+
     }
 }

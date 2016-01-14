@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using didactic_palm_tree.Abstract;
+﻿using didactic_palm_tree.Views.Components.Abstract;
 
-namespace didactic_palm_tree.Battery
+namespace didactic_palm_tree.Views.Components.Data
 {
     class WireData : ComponentData
     {

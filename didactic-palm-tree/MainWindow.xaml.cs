@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views;
+using didactic_palm_tree.Views.Components.ViewModels;
+using DiagramDesigner;
 
 namespace didactic_palm_tree
 {
@@ -34,14 +36,10 @@ namespace didactic_palm_tree
             this.DataContext = WindowViewModel;
         }
 
-        private void Load_OnClick(object sender, RoutedEventArgs e)
+        void WindowLoaded(object paraameter)
         {
-            WindowViewModel.model = Diagram.Load("test.sql");
-        }
-
-        private void Save_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowViewModel.model.Save();
+            BatteryViewModel battery = new BatteryViewModel(WindowViewModel.DiagramViewModel, 100, 100);
+            WindowViewModel.DiagramViewModel.Items.Add(battery);
         }
     }
 }

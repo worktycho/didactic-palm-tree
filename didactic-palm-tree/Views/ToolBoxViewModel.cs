@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using didactic_palm_tree.Views.Components.ViewModels;
 using DiagramDesigner.Helpers;
-using didactic_palm_tree.Battery;
 
-namespace didactic_palm_tree
+namespace didactic_palm_tree.Views
 {
     public class ToolBoxViewModel
     {
@@ -14,8 +10,12 @@ namespace didactic_palm_tree
 
         public ToolBoxViewModel()
         {
-            //toolBoxItems.Add(new ToolBoxData("../Images/Setting.png", typeof()));
             toolBoxItems.Add(new ToolBoxData("../Resources/Battery.png", typeof(BatteryViewModel)));
+            toolBoxItems.Add(new ToolBoxData("../Resources/Switch_Off.png", typeof(SwitchViewModel)));
+            toolBoxItems.Add(new ToolBoxData("../Resources/Bulb_Off.png", typeof(BulbViewModel)));
+            toolBoxItems.Add(new ToolBoxData("../Resources/Ammeter.png", typeof(AmmeterViewModel)));
+            toolBoxItems.Add(new ToolBoxData("../Resources/Voltmeter.png", typeof(VoltmeterViewModel)));
+            toolBoxItems.Add(new ToolBoxData("../Resources/Resistor.png", typeof(ResistorViewModel)));
         }
 
         public List<ToolBoxData> ToolBoxItems
