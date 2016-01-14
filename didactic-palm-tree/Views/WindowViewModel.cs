@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Windows.Data;
-using System.Threading.Tasks;
 using didactic_palm_tree.UIModel;
-using didactic_palm_tree.Views;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
 
@@ -16,21 +8,7 @@ namespace didactic_palm_tree.Views
 {
     public class WindowViewModel : INPCBase
     {
-        public UIModel.Diagram model;
-        // VIEWMODELS
-        public ToolBoxViewModel ToolBoxViewModel { get; set; }
-        public DiagramViewModel DiagramViewModel { get; set; }
-
-        // COMMANDS
-        public SimpleCommand DeleteSelectedItemsCommand { get; private set; }
-        public SimpleCommand CreateNewDiagramCommand { get; private set; }
-        public SimpleCommand SaveDiagramCommand { get; private set; }
-        public SimpleCommand LoadDiagramCommand { get; private set; }
-
-        // UTILITIES
-        public bool IsBusy { get; set; }
-        public int? CurrentDiagramId { get; set; }
-        public List<int> SavedDiagrams { get; set; } 
+        public Diagram model;
 
         public WindowViewModel()
         {
@@ -47,12 +25,35 @@ namespace didactic_palm_tree.Views
             model = Diagram.Load("test.sql");
         }
 
-        private void ItemsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        // VIEWMODELS
+        public ToolBoxViewModel ToolBoxViewModel { get; set; }
+        public DiagramViewModel DiagramViewModel { get; set; }
+
+        // COMMANDS
+        public SimpleCommand DeleteSelectedItemsCommand { get; private set; }
+        public SimpleCommand CreateNewDiagramCommand { get; private set; }
+        public SimpleCommand SaveDiagramCommand { get; private set; }
+        public SimpleCommand LoadDiagramCommand { get; private set; }
+
+        // UTILITIES
+        public bool IsBusy { get; set; }
+        public int? CurrentDiagramId { get; set; }
+        public List<int> SavedDiagrams { get; set; }
+
+        private void ItemsOnCollectionChanged(object sender,
+            NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
             foreach (var item in notifyCollectionChangedEventArgs.NewItems)
             {
-                var viewModel = (ComponentViewModel) item;
-                model.Add(viewModel.Model);
+                if (item is ConnectorViewModel)
+                {
+                    //TODO
+                }
+                else
+                {
+                    var viewModel = (ComponentViewModel) item;
+                    model.Add(viewModel.Model);
+                }
             }
         }
 
@@ -73,7 +74,7 @@ namespace didactic_palm_tree.Views
             1. Create empty set of components to remove
             2. Create empty diagram ID
             3. Use DiagramViewModel.CreateNewDiagram.Execute(null) to create it
-            */    
+            */
         }
 
         private void ExecuteSaveDiagramCommand(object parameter)
@@ -108,8 +109,5 @@ namespace didactic_palm_tree.Views
         }
 
         // MISCELLANEOUS
-
-
-
     }
 }
