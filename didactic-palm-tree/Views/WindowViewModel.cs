@@ -23,6 +23,11 @@ namespace didactic_palm_tree.Views
             ConnectorViewModel.PathFinder = new OrthogonalPathFinder();
 
             model = Diagram.Load("test.sql");
+
+            DeleteSelectedItemsCommand = new SimpleCommand(ExecuteDeleteSelectedItemsCommand);
+            CreateNewDiagramCommand = new SimpleCommand(ExecuteCreateNewDiagramCommand);
+            SaveDiagramCommand = new SimpleCommand(ExecuteSaveDiagramCommand);
+            LoadDiagramCommand = new SimpleCommand(ExecuteLoadDiagramCommand);
         }
 
         // VIEWMODELS
