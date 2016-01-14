@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using didactic_palm_tree.Views.Components.Abstract;
+using didactic_palm_tree.Views.Components.ViewModels;
 using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
@@ -9,7 +10,7 @@ namespace didactic_palm_tree.UIModel
 
         public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
-            throw new System.NotImplementedException();
+            return new VoltmeterViewModel(parent, Left, Top) {Model = this};
         }
     }
 }

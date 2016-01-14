@@ -7,10 +7,9 @@ namespace didactic_palm_tree.UIModel
 {
     internal class Switch : Component
     {
-
         public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
-            return new SwitchViewModel() {Model = this};
+            return new SwitchViewModel(parent, Left, Top) {Model = this};
         }
     }
 }
