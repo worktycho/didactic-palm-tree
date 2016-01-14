@@ -7,9 +7,9 @@
     <!-- Connector Style -->
     <Style TargetType="{x:Type s:Connector}">
         <Setter Property="Width"
-                Value="8" />
+                Value="10" />
         <Setter Property="Height"
-                Value="8" />
+                Value="10" />
         <Setter Property="Cursor"
                 Value="Cross" />
         <Setter Property="SnapsToDevicePixels"
