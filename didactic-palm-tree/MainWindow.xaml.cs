@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views;
 
 namespace didactic_palm_tree
@@ -30,6 +32,16 @@ namespace didactic_palm_tree
 
             WindowViewModel = new WindowViewModel();
             this.DataContext = WindowViewModel;
+        }
+
+        private void Load_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowViewModel.model = Diagram.Load("test.sql");
+        }
+
+        private void Save_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowViewModel.model.Save();
         }
     }
 }

@@ -1,63 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Data;
+using System.Collections.ObjectModel;
+using System.Data.SQLite;
 
 namespace didactic_palm_tree.UIModel
 {
     public class Diagram
     {
-        static readonly Dictionary<String, Dictionary<Point, IComponent>> StaticComponents = new Dictionary<string, Dictionary<Point, IComponent>>();
-        private readonly Dictionary<Point, IComponent> _component = new Dictionary<Point, IComponent>();
-        private readonly String _file;
+        private CircuitContext _context;
 
-        public Diagram(string file)
+        public Diagram(CircuitContext context)
         {
-            _file = file;
+            _context = context;
         }
 
-        private Diagram(string file, Dictionary<Point, IComponent> staticComponent)
+        public void Add(Component component)
         {
-            _component = staticComponent;
-            _file = file;
+            _context.Components.Add(component);
         }
 
-        public void Add(IComponent component)
+        public Component GetComponent(Point location)
         {
-            _component.Add(component.GetPosition(), component);
-        }
-
-        public IComponent GetComponent(Point location)
-        {
-            if (StaticComponents.ContainsKey(_file))
-            {
-                if (StaticComponents[_file].ContainsKey(location))
-                    return StaticComponents[_file][location];
-            }
-            return _component[location];
+            
+            return _context.Components.FirstOrDefault(comp => comp.GetPosition() == location);
         }
 
         public static Diagram CreateNew(string testSql)
+        {/*
+            var connectionStringBuilder = new SQLiteConnectionStringBuilder { DataSource = testSql };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SQLiteConnection(connectionString);
+            var context = new CircuitContext(connection);
+            */
+            var context = new CircuitContext();
+            Diagram diagram = new Diagram(context);
+            diagram._context.Database.CreateIfNotExists();
+            return diagram;
+        }
+
+        public static Diagram Load(string file)
         {
-               return new Diagram(testSql);
+            /*
+            var connectionStringBuilder = new SQLiteConnectionStringBuilder { DataSource = file };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SQLiteConnection(connectionString);
+            var context = new CircuitContext(connection
+            */
+            var context = new CircuitContext();
+            Diagram diagram = new Diagram(context);
+            diagram._context.Database.CreateIfNotExists();
+            return diagram;
         }
 
         public void Save()
         {
-            if (StaticComponents.ContainsKey(_file))
-                StaticComponents[_file] = _component;
-            else
-            {
-                StaticComponents.Add(_file, _component);
-            }
-        }
-
-        public static Diagram Load(string testSql)
-        {
-            Diagram diagram = new Diagram("", StaticComponents[testSql]);
-            return diagram;
+            _context.SaveChanges();
         }
     }
 }

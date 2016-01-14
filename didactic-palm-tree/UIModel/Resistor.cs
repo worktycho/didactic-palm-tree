@@ -10,7 +10,7 @@ using System.Windows;
 namespace didactic_palm_tree.UIModel
 {
     [Table("Resistor")]
-    public class Resistor : IComponent
+    public class Resistor : Component
     {
         public Resistor(int Resistance)
         {
@@ -22,7 +22,7 @@ namespace didactic_palm_tree.UIModel
             get; private set;
         }
 
-        public Point GetPosition()
+        public override Point GetPosition()
         {
             return new Point(0, 0);
         }

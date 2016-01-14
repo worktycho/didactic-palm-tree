@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using didactic_palm_tree.UIModel;
 using DiagramDesigner;
 
 namespace didactic_palm_tree.Abstract
@@ -36,6 +37,8 @@ namespace didactic_palm_tree.Abstract
         }
 
         public String Setting { get; set; }
+        public UIModel.Component Model { get; set; }
+
         //public ICommand ShowDataChangeWindowCommand { get; private set; }
         private void Init()
         {

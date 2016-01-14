@@ -16,9 +16,6 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <!-- ToolBox Control -->
-            <local:ToolBoxControl Grid.Column="0"
-                                  DataContext="{Binding ToolBoxViewModel}" />
 
             <GridSplitter Grid.Column="1"
 						  HorizontalAlignment="Left"
@@ -30,6 +27,19 @@
             <s:DiagramControl Grid.Column="1"
                               DataContext="{Binding DiagramViewModel}"
                               Margin="3,1,0,0" />
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!-- ToolBox Control -->
+                <local:ToolBoxControl Grid.Column="0"
+                                  DataContext="{Binding ToolBoxViewModel}" />
+
+                <Button Grid.Column="0" Grid.Row="1" Click="Save_OnClick">Save</Button>
+                <Button Grid.Column="0" Grid.Row="2" Click="Load_OnClick">Load</Button>
+            </Grid>
         </Grid>
     </DockPanel>
 

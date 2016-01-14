@@ -1,4 +1,6 @@
-﻿namespace didactic_palm_tree.Simulation
+﻿
+
+namespace didactic_palm_tree.Simulation
 {
     public interface IComponent
     {
