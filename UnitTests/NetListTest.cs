@@ -111,6 +111,11 @@ namespace UnitTests
         {
             throw new NotImplementedException();
         }
+
+        public bool IsVoltageSource()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class Terminal : ITerminal

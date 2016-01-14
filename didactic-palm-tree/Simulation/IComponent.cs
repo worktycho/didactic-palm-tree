@@ -8,5 +8,6 @@ namespace didactic_palm_tree.Simulation
         ITerminal Bottom { get; }
         ITerminal Top { get; }
         double GetResistance();
+        bool IsVoltageSource();
     }
 }
