@@ -43,6 +43,8 @@ namespace didactic_palm_tree.Views
             DiagramViewModel.Items.CollectionChanged += ItemsOnCollectionChanged;
 
             ConnectorViewModel.PathFinder = new OrthogonalPathFinder();
+
+            model = Diagram.Load("test.sql");
         }
 
         private void ItemsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
