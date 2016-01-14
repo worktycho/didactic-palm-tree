@@ -48,16 +48,19 @@ namespace didactic_palm_tree.Views
         private void ItemsOnCollectionChanged(object sender,
             NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            foreach (var item in notifyCollectionChangedEventArgs.NewItems)
+            if (notifyCollectionChangedEventArgs.NewItems != null)
             {
-                if (item is ConnectorViewModel)
+                foreach (var item in notifyCollectionChangedEventArgs.NewItems)
                 {
-                    //TODO
-                }
-                else
-                {
-                    var viewModel = (ComponentViewModel) item;
-                    model.Add(viewModel.Model);
+                    if (item is ConnectorViewModel)
+                    {
+                        //TODO
+                    }
+                    else
+                    {
+                        var viewModel = (ComponentViewModel)item;
+                        model.Add(viewModel.Model);
+                    }
                 }
             }
         }
