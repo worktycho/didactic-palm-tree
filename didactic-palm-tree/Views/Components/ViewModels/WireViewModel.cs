@@ -7,12 +7,12 @@ namespace didactic_palm_tree.Views.Components.ViewModels
     {
         public WireViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
         {
-
+            Model = new UIModel.Wire();
         }
 
         public WireViewModel()
         {
-
+            Model = new UIModel.Wire();
         }
 
         public override void ExecuteShowDataChangeWindowCommand(object paramter)

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Battery" Height="300" Width="300">
     <Grid >
-        <Image Source="pack://application:,,,/Resources/Cell.png" />
+        <Image Source="pack://application:,,,/Resources/Battery.png" />
         <Label Name="VoltageLabel">0</Label>
         <Label Name="CurrentLabel">0</Label>
     </Grid>

@@ -10,9 +10,11 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 
         public BatteryViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
         {
-            _component = new UIModel.Battery();
-            _component.left = left;
-            _component.top = top;
+            _component = new UIModel.Battery
+            {
+                left = left,
+                top = top
+            };
             this.Model = _component;
         }
 

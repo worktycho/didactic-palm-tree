@@ -142,10 +142,15 @@
     <Compile Include="Simulation\NetList.cs" />
     <Compile Include="Simulation\Resistor.cs" />
     <Compile Include="Simulation\Terminal.cs" />
+    <Compile Include="UIModel\Ammeter.cs" />
     <Compile Include="UIModel\Battery.cs" />
+    <Compile Include="UIModel\Bulb.cs" />
     <Compile Include="UIModel\Diagram.cs" />
     <Compile Include="UIModel\IComponent.cs" />
     <Compile Include="UIModel\Resistor.cs" />
+    <Compile Include="UIModel\Switch.cs" />
+    <Compile Include="UIModel\Voltmeter.cs" />
+    <Compile Include="UIModel\Wire.cs" />
     <Compile Include="Views\Components\Abstract\ComponentData.cs" />
     <Compile Include="Views\Components\Abstract\ComponentViewModel.cs" />
     <Compile Include="Views\Components\Data\BatteryData.cs" />
@@ -293,7 +298,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-<ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Ammeter.png" />
     <Resource Include="Resources\Battery.png" />
     <Resource Include="Resources\Bulb_Off.png" />
