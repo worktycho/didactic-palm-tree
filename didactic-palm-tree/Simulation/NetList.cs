@@ -92,7 +92,17 @@ namespace didactic_palm_tree.Simulation
             return bMatrix;
         }
 
+        public SparseMatrix CreateCMatrix(List<IConnection> connections, List<IConnection> voltageSources)
+        {
+            var cMatrix = CreateBMatrix(connections, voltageSources);
+            cMatrix.Transpose();
+            return cMatrix;
+        }
 
+        public SparseMatrix CreateDMatrix(List<IConnection> voltageSources)
+        {
+            return new SparseMatrix(voltageSources.Count, voltageSources.Count);
+        }
 
         public static double GetVoltageDrop(ITerminal top, object bottom)
         {
