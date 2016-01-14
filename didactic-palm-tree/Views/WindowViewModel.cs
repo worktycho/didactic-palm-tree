@@ -22,7 +22,7 @@ namespace didactic_palm_tree.Views
 
             ConnectorViewModel.PathFinder = new OrthogonalPathFinder();
 
-            model = Diagram.Load("test.sql");
+            ExecuteLoadDiagramCommand(null);
 
             DeleteSelectedItemsCommand = new SimpleCommand(ExecuteDeleteSelectedItemsCommand);
             CreateNewDiagramCommand = new SimpleCommand(ExecuteCreateNewDiagramCommand);
@@ -111,6 +111,11 @@ namespace didactic_palm_tree.Views
             */
 
             model = Diagram.Load("test.sql");
+            foreach (var component in model.Components)
+            {
+                var viewmodel = component.CreateViewModel();
+                DiagramViewModel.Items.Add(viewmodel);
+            }
         }
 
         // MISCELLANEOUS

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
+using didactic_palm_tree.Views.Components.Abstract;
+using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
 {
@@ -22,5 +24,7 @@ namespace didactic_palm_tree.UIModel
         {
             Id = Guid.NewGuid();
         }
+
+        public abstract ComponentViewModel CreateViewModel();
     }
 }

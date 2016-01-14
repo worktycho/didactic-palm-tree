@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace didactic_palm_tree.UIModel
         {
             _context = context;
         }
+
+        public IEnumerable<Component> Components => _context.Components;
 
         public void Add(Component component)
         {

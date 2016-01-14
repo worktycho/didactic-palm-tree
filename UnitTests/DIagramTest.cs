@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using didactic_palm_tree.UIModel;
+using didactic_palm_tree.Views.Components.Abstract;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -96,6 +97,11 @@ namespace UnitTests
         public override Point GetPosition()
         {
             return _point;
+        }
+
+        public override ComponentViewModel CreateViewModel()
+        {
+            throw new NotImplementedException();
         }
     }
 }
