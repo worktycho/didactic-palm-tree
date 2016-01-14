@@ -106,7 +106,35 @@ namespace didactic_palm_tree.Simulation
 
         public SparseMatrix CreateAMatrix(List<IConnection> connections, List<IConnection> voltageSources)
         {
-            
+            var aMatrix = new StarMathLib.SparseMatrix(connections.Count + voltageSources.Count, connections.Count + voltageSources.Count);
+            var gMatrix = CreateGMatrix(connections);
+            var bMatrix = CreateBMatrix(connections, voltageSources);
+            var cMatrix = CreateCMatrix(connections, voltageSources);
+            var dMatrix = CreateDMatrix(voltageSources);
+
+            for (var i = 0; i < connections.Count + voltageSources.Count; i++)
+            {
+                for (var j = 0; j < connections.Count + voltageSources.Count; j++)
+                {
+                    if(i < connections.Count && j < connections.Count)
+                    {
+                        aMatrix[i, j] = gMatrix[i, j];
+                    }
+                    else if(i < connections.Count && j >= connections.Count)
+                    {
+                        aMatrix[i, j] = bMatrix[i, j - connections.Count + 1];
+                    }
+                    else if(i >= connections.Count && j < connections.Count)
+                    {
+                        aMatrix[i, j] = cMatrix[i - connections.Count + 1, j];
+                    }
+                    else if(i >= connections.Count && j >= connections.Count)
+                    {
+                        aMatrix[i, j] = dMatrix[i - connections.Count + 1, j - connections.Count + 1];
+                    }
+                }
+            }
+            return aMatrix;
         }
 
         public SparseMatrix CreateIMatrix(List<IConnection> connections)
