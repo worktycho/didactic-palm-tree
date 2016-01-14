@@ -31,6 +31,59 @@
         
     </ControlTemplate>
 
+    <!-- ToolBar Styling -->
+    <Style x:Key="ToolBarTemplate" TargetType="{x:Type ToolBar}">
+        <Setter Property="Background"
+                    Value="DarkRed">
+        </Setter>
+        <Setter Property="Foreground"
+                    Value="White">
+        </Setter>
+    </Style>
+    
+    <!-- ProgressBar Styling -->
+    <Style x:Key="ProgressBarTemplate" TargetType="{x:Type ProgressBar}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="DarkRed"/>
+        <Setter Property="Background"
+                    Value="White">
+        </Setter>
+        <Setter Property="Foreground"
+                    Value="GreenYellow">
+        </Setter>
+    </Style>
+    
+    <!-- ComboBox Styling -->
+    <Style x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
+        <Setter Property="Background"
+                    Value="White">
+        </Setter>
+        <Setter Property="Foreground"
+                    Value="Black">
+        </Setter>
+    </Style>
+
+    <!-- Label Styling -->
+    <Style x:Key="LabelTemplate" TargetType="{x:Type Label}">
+        <Setter Property="Background"
+                    Value="DarkRed">
+        </Setter>
+        <Setter Property="Foreground"
+                    Value="White">
+        </Setter>
+    </Style>
+    
+    <!-- Button Styling -->
+    <Style x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+        <Setter Property="Background"
+                Value="DarkRed">
+        </Setter>
+        <Setter Property="Foreground"
+                Value="White">
+        </Setter>
+    </Style>
+    
+    <!-- Expander Styling -->
     <Style x:Key="ExpanderTemplate"  TargetType="{x:Type Expander}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="DarkRed"/>
@@ -38,6 +91,15 @@
         <Setter Property="Background" Value="DarkRed"/>
     </Style>
 
+    <!-- ItemControl Styling -->
+    <Style x:Key="ItemControlTemplate"  TargetType="{x:Type ItemsControl}">
+        <Setter Property="BorderThickness" Value="1"/> "
+        <Setter Property="BorderBrush" Value="DarkRed"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <!-- ScrollViewer Styling -->
     <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
     <SolidColorBrush x:Key="StandardBackgroundBrush" Color="#FFF" />
     <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />

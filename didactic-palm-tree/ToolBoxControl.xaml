@@ -16,7 +16,7 @@
             <Expander Header="Symbols"
                       IsExpanded="True"
                       Style="{StaticResource ExpanderTemplate}">
-                <ItemsControl ItemsSource="{Binding ToolBoxItems}">
+                <ItemsControl ItemsSource="{Binding ToolBoxItems}" Style="{StaticResource ItemControlTemplate}">
                     <ItemsControl.Template>
                         <ControlTemplate TargetType="{x:Type ItemsControl}">
                             <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
