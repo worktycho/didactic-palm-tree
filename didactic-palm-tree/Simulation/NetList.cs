@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
+using StarMathLib;
 
 namespace didactic_palm_tree.Simulation
 {
@@ -40,6 +41,58 @@ namespace didactic_palm_tree.Simulation
                 }
             }
         }
+
+        public SparseMatrix CreateGMatrix(List<IConnection> connections)
+        {
+            var gMatrix = new StarMathLib.SparseMatrix(connections.Count, connections.Count);
+            for (var i = 0; i < connections.Count; i++)
+            {
+                for (var j = 0; j < connections.Count; j++)
+                {
+                    var sumResists = 0.0;
+                    foreach (var component in connections[i].GetConnectedComponents())
+                    {
+                        if (i == j) sumResists += 1.0 / component.GetResistance();
+                        else if ((component.Top.GetConnection() == connections[i] &&
+                                  component.Bottom.GetConnection() == connections[j]) ||
+                                 (component.Top.GetConnection() == connections[j] &&
+                                  component.Bottom.GetConnection() == connections[i]))
+                        {
+                            sumResists += 1.0 / component.GetResistance();
+                        }
+                    }
+                    gMatrix[i, j] = sumResists;
+                }
+            }
+            return gMatrix;
+        }
+
+        public SparseMatrix CreateBMatrix(List<IConnection> connections, List<IConnection> voltageSources)
+        {
+            
+            var bMatrix = new StarMathLib.SparseMatrix(voltageSources.Count, connections.Count);
+            for (var i = 0; i < voltageSources.Count; i++)
+            {
+                for (var j = 0; j < connections.Count; j++)
+                {
+                    var value = 0;
+                    foreach (var source in voltageSources[i].GetConnectedComponents())
+                    {
+                        if (source.Top.GetConnection() == connections[j])
+                        {
+                            value = 1;
+                        } else if (source.Bottom.GetConnection() == connections[j])
+                        {
+                            value = -1;
+                        }
+                    }
+                    bMatrix[i, j] = value;
+                }
+            }
+            return bMatrix;
+        }
+
+
 
         public static double GetVoltageDrop(ITerminal top, object bottom)
         {
