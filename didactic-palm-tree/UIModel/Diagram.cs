@@ -25,6 +25,11 @@ namespace didactic_palm_tree.UIModel
             _context.Components.Add(component);
         }
 
+        public void Remove(Component component)
+        {
+            _context.Components.Remove(component);
+        }
+
         public Component GetComponent(Point location)
         {
             

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
@@ -44,6 +45,7 @@ namespace didactic_palm_tree.Views
         public bool IsBusy { get; set; }
         public int? CurrentDiagramId { get; set; }
         public List<int> SavedDiagrams { get; set; }
+        public List<SelectableDesignerItemViewModelBase> itemsToRemove; 
 
         private void ItemsOnCollectionChanged(object sender,
             NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -74,6 +76,34 @@ namespace didactic_palm_tree.Views
             3. Combine the two sets
             4. Use DiagramViewModel.RemoveitemCommand.Execute(items) to remove them         
             */
+            itemsToRemove = DiagramViewModel.SelectedItems;
+            List<SelectableDesignerItemViewModelBase> connectionsToRemove = new List<SelectableDesignerItemViewModelBase>();
+            foreach (var connector in DiagramViewModel.Items.OfType<ConnectorViewModel>())
+            {
+                if (ItemsToDeleteHasConnector(itemsToRemove, connector.SourceConnectorInfo))
+                {
+                    connectionsToRemove.Add(connector);
+                }
+
+                if (ItemsToDeleteHasConnector(itemsToRemove, (FullyCreatedConnectorInfo)connector.SinkConnectorInfo))
+                {
+                    connectionsToRemove.Add(connector);
+                }
+            }
+            itemsToRemove.AddRange(connectionsToRemove);
+            foreach (var selectedItem in itemsToRemove)
+            {
+                DiagramViewModel.RemoveItemCommand.Execute(selectedItem);
+                if (selectedItem is ConnectorViewModel)
+                {
+
+                }
+                else
+                {
+                    ComponentViewModel componentViewModel = (ComponentViewModel) selectedItem;
+                    model.Remove(componentViewModel.Model);
+                }
+            }
         }
 
         private void ExecuteCreateNewDiagramCommand(object parameter)
@@ -83,6 +113,8 @@ namespace didactic_palm_tree.Views
             2. Create empty diagram ID
             3. Use DiagramViewModel.CreateNewDiagram.Execute(null) to create it
             */
+            
+
         }
 
         private void ExecuteSaveDiagramCommand(object parameter)
@@ -117,5 +149,9 @@ namespace didactic_palm_tree.Views
         }
 
         // MISCELLANEOUS
+        private bool ItemsToDeleteHasConnector(List<SelectableDesignerItemViewModelBase> itemsToRemove, FullyCreatedConnectorInfo connector)
+        {
+            return itemsToRemove.Contains(connector.DataItem);
+        }
     }
 }
