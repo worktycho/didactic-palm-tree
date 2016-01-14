@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views.Components.Abstract;
+using DiagramDesigner;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -94,12 +95,7 @@ namespace UnitTests
         public TestComponent(int x, int y)
         {_point = new Point(x, y); }
 
-        public override Point GetPosition()
-        {
-            return _point;
-        }
-
-        public override ComponentViewModel CreateViewModel()
+        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
             throw new NotImplementedException();
         }

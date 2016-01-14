@@ -12,8 +12,8 @@ namespace didactic_palm_tree.Views.Components.ViewModels
         {
             _component = new UIModel.Battery
             {
-                left = left,
-                top = top
+                Left = left,
+                Top = top
             };
             this.Model = _component;
         }

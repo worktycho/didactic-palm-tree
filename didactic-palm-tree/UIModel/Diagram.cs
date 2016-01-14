@@ -28,11 +28,11 @@ namespace didactic_palm_tree.UIModel
             _context.Components.Add(component);
         }
 
-        public Component GetComponent(Point location)
+        /*public Component GetComponent(Point location)
         {
             
             return _context.Components.FirstOrDefault(comp => comp.GetPosition() == location);
-        }
+        }*/
 
         public static Diagram CreateNew(string testSql)
         {/*

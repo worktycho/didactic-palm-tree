@@ -80,6 +80,10 @@
     <Compile Include="NetListCircuitTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj">
+      <Project>{74872A86-6809-476B-95AB-6F3512317059}</Project>
+      <Name>DiagramDesigner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\didactic-palm-tree\didactic-palm-tree.csproj">
       <Project>{b8f34c7b-519d-4656-82a8-6b216978aa7b}</Project>
       <Name>didactic-palm-tree</Name>

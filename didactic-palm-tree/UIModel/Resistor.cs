@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Windows;
 using didactic_palm_tree.Views.Components.Abstract;
+using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
 {
@@ -27,12 +28,7 @@ namespace didactic_palm_tree.UIModel
             get; private set;
         }
 
-        public override Point GetPosition()
-        {
-            return new Point(0, 0);
-        }
-
-        public override ComponentViewModel CreateViewModel()
+        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
             throw new NotImplementedException();
         }

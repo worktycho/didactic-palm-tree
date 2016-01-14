@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
@@ -57,7 +58,8 @@ namespace didactic_palm_tree.Views
                 else
                 {
                     var viewModel = (ComponentViewModel) item;
-                    model.Add(viewModel.Model);
+                    if
+                    (!model.Components.Contains(viewModel.Model)) model.Add(viewModel.Model);
                 }
             }
         }
@@ -110,10 +112,11 @@ namespace didactic_palm_tree.Views
             4. Set to NOT BUSY
             */
 
+            DiagramViewModel.Items.Clear();
             model = Diagram.Load("test.sql");
             foreach (var component in model.Components)
             {
-                var viewmodel = component.CreateViewModel();
+                var viewmodel = component.CreateViewModel(DiagramViewModel);
                 DiagramViewModel.Items.Add(viewmodel);
             }
         }

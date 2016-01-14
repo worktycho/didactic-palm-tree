@@ -17,14 +17,14 @@ namespace didactic_palm_tree.UIModel
     {
         [Key]
         public Guid Id { get; set; }
-
-        public abstract Point GetPosition();
+        public double Left { get; set; }
+        public double Top { get; set; }
 
         public Component()
         {
             Id = Guid.NewGuid();
         }
 
-        public abstract ComponentViewModel CreateViewModel();
+        public abstract ComponentViewModel CreateViewModel(DiagramViewModel parent);
     }
 }

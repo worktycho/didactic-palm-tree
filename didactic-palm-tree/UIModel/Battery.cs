@@ -10,14 +10,13 @@ using System.Reactive.Linq;
 using System.Windows;
 using didactic_palm_tree.Views.Components.Abstract;
 using didactic_palm_tree.Views.Components.ViewModels;
+using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
 {
     [Table("Battery")]
     public class Battery  : Component
     {
-        public double left;
-        public double top;
 
         public Battery()
         {
@@ -27,14 +26,10 @@ namespace didactic_palm_tree.UIModel
 
         public IObservable<string> Voltage { get; set; }
         public IObservable<string> Current { get; set; }
-        public override Point GetPosition()
-        {
-            throw new NotImplementedException();
-        }
 
-        public override ComponentViewModel CreateViewModel()
+        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
-            return new BatteryViewModel();
+            return new BatteryViewModel(parent, Left, Top);
         }
     }
 }
