@@ -79,5 +79,11 @@ namespace DiagramDesigner
         {
             Items.Clear();
         }
+
+        public void AddConnector(ConnectorViewModel viewmodel)
+        {
+            viewmodel.Parent = this;
+            Items.Add(viewmodel);
+        }
     }
 }

@@ -166,7 +166,6 @@
     <Compile Include="Views\Components\ViewModels\ResistorViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\SwitchViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\VoltmeterViewModel.cs" />
-    <Compile Include="Views\Components\ViewModels\WireViewModel.cs" />
     <Compile Include="Views\ToolBoxViewModel.cs" />
     <Compile Include="Views\Util\ApplicationServicesProvider.cs" />
     <Compile Include="Views\Util\IMessageBoxService.cs" />
