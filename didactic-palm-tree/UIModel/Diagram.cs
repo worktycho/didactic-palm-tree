@@ -23,9 +23,14 @@ namespace didactic_palm_tree.UIModel
 
         public IEnumerable<Component> Components => _context.Components;
 
-        public void Add(Component component)
+        public Component Add(Component component)
         {
-            _context.Components.Add(component);
+            if (!_context.Components.Any(x => x.Id == component.Id))
+            {
+                _context.Components.Add(component);
+                return component;
+            }
+            return _context.Components.First(x => x.Id == component.Id);
         }
 
         /*public Component GetComponent(Point location)

@@ -29,7 +29,7 @@ namespace didactic_palm_tree.UIModel
 
         public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
-            return new BatteryViewModel(parent, Left, Top);
+            return new BatteryViewModel(parent, Left, Top) {Model = this};
         }
     }
 }

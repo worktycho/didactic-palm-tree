@@ -10,7 +10,7 @@ namespace didactic_palm_tree.UIModel
 
         public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
         {
-            return new SwitchViewModel();
+            return new SwitchViewModel() {Model = this};
         }
     }
 }

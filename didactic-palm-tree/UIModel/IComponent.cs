@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Documents;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
+using System.ComponentModel;
 
 namespace didactic_palm_tree.UIModel
 {
@@ -26,5 +27,12 @@ namespace didactic_palm_tree.UIModel
         }
 
         public abstract ComponentViewModel CreateViewModel(DiagramViewModel parent);
+
+        public void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var viewmodel = (ComponentViewModel) sender;
+            Left = viewmodel.Left;
+            Top = viewmodel.Top;
+        }
     }
 }

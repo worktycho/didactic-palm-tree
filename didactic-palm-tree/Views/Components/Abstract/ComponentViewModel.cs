@@ -9,6 +9,7 @@ namespace didactic_palm_tree.Views.Components.Abstract
     public abstract class ComponentViewModel : DesignerItemViewModelBase
     {
         private IUIVisualizerService visualizerService;
+        private Component _model;
 
         public ComponentViewModel()
         {
@@ -33,7 +34,17 @@ namespace didactic_palm_tree.Views.Components.Abstract
         }
 
         public String Setting { get; set; }
-        public UIModel.Component Model { get; set; }
+
+        public Component Model
+        {
+            get { return _model; }
+            set
+            {
+                _model = value;
+                this.PropertyChanged += _model.OnPropertyChanged;
+            }
+        }
+
         public ICommand ShowDataChangeWindowCommand { get; private set; }
 
         private void Init()
