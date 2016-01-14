@@ -104,6 +104,11 @@ namespace didactic_palm_tree.Simulation
             return new SparseMatrix(voltageSources.Count, voltageSources.Count);
         }
 
+        public SparseMatrix CreateAMatrix(List<IConnection> connections, List<IConnection> voltageSources)
+        {
+            
+        }
+
         public static double GetVoltageDrop(ITerminal top, object bottom)
         {
             return top.GetComponent().Bottom.Voltage;
