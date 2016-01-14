@@ -76,7 +76,7 @@ namespace didactic_palm_tree.Simulation
                 for (var j = 0; j < connections.Count; j++)
                 {
                     var value = 0;
-                    foreach (var source in voltageSources[i].GetConnectedComponents())
+                    foreach (var source in voltageSources)
                     {
                         if (source.Top.GetConnection() == connections[j])
                         {
