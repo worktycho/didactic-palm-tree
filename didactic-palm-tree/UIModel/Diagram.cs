@@ -33,11 +33,10 @@ namespace didactic_palm_tree.UIModel
             return _context.Components.First(x => x.Id == component.Id);
         }
 
-        /*public Component GetComponent(Point location)
+        public void Remove(Component component)
         {
-            
-            return _context.Components.FirstOrDefault(comp => comp.GetPosition() == location);
-        }*/
+            _context.Components.Remove(component);
+        }
 
         public static Diagram CreateNew(string testSql)
         {/*
