@@ -30,4 +30,124 @@
         </ControlTemplate.Triggers>
         
     </ControlTemplate>
+
+    <Style x:Key="ExpanderTemplate"  TargetType="{x:Type Expander}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="DarkRed"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="DarkRed"/>
+    </Style>
+
+    <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
+    <SolidColorBrush x:Key="StandardBackgroundBrush" Color="#FFF" />
+    <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
+    <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Gray" />
+    <SolidColorBrush x:Key="SelectedForegroundBrush" Color="White" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="DarkRed" />
+    <SolidColorBrush x:Key="NormalBrush" Color="DarkRed" />
+    <SolidColorBrush x:Key="NormalBorderBrush" Color="DarkRed" />
+    <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#888" />
+    <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#888" />
+    <LinearGradientBrush x:Key="ListBoxBackgroundBrush"/>
+    <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Name="Border"
+                                Margin="1"
+                                CornerRadius="2"
+                                Background="{StaticResource NormalBrush}"
+                                BorderBrush="{StaticResource NormalBorderBrush}"
+                                BorderThickness="1">
+                        <Path HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Fill="DarkRed"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background"
+
+                                Value="DarkRed" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground"
+
+                                Value="DarkRed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="DarkRed" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border CornerRadius="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollViewerTemplate" TargetType="{x:Type ScrollViewer}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollContentPresenter Grid.Column="1"/>
+                        <ScrollBar Name="PART_VerticalScrollBar"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   Value="{TemplateBinding VerticalOffset}"
+                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                        <ScrollBar Name="PART_HorizontalScrollBar"
+                                   Orientation="Horizontal"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   Value="{TemplateBinding HorizontalOffset}"
+                                   Maximum="{TemplateBinding ScrollableWidth}"
+                                   ViewportSize="{TemplateBinding ViewportWidth}"
+                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

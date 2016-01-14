@@ -12,8 +12,43 @@
     <Window.DataContext>
         <views:WindowViewModel />
     </Window.DataContext>
-    
+
+    <Window.InputBindings>
+        <KeyBinding Key="Del"
+                    Command="{Binding DeleteSelectedItemsCommand}" />
+    </Window.InputBindings>
+
     <DockPanel Margin="0">
+        <ToolBar Height="35" DockPanel.Dock="Top">
+            <Button ToolTip="New"
+                    Content="New"
+					Margin="8,0,3,0"
+                    Command="{Binding CreateNewDiagramCommand}"/>
+            <Button ToolTip="Save"
+                    Content="Save"
+                    Margin="8,0,3,0"
+                    Command="{Binding SaveDiagramCommand}" />
+
+            <Label Margin="30,0,3,0"
+                   VerticalAlignment="Center"
+                   Content="Saved Diagrams" />
+            <ComboBox Margin="8,0,3,0"
+                     Width="200"
+                     ToolTip="Saved Diagrams"
+                      SelectedItem="{Binding CurrentDiagramId}"
+                     ItemsSource="{Binding SavedDiagrams}"/>
+            <Button ToolTip="Load Selected Diagram"
+                    Content="Load"
+                    Margin="8,0,3,0"
+                    Command="{Binding LoadDiagramCommand}"/>
+            <ProgressBar Margin="8,0,3,0"
+                         Visibility="{Binding Path=IsBusy, Converter={x:Static s:BoolToVisibilityConverter.Instance}}"
+                         IsIndeterminate="True"
+                         Width="150"
+                         Height="20"
+                         VerticalAlignment="Center" />
+        </ToolBar>
+
         <Grid Margin="0,5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="230" />

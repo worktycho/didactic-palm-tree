@@ -4,6 +4,6 @@ namespace didactic_palm_tree.Views.Components.Data
 {
     class ResistorData : ComponentData
     {
-
+        public float Resistance { get; set; }
     }
 }

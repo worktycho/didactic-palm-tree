@@ -4,6 +4,6 @@ namespace didactic_palm_tree.Views.Components.Data
 {
     class BulbData : ComponentData
     {
-
+        public bool IsOn { get; set; }
     }
 }
