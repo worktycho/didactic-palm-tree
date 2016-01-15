@@ -8,6 +8,8 @@ namespace didactic_palm_tree.Views.Components.ViewModels
     {
         private UIModel.Battery _component;
 
+        public float Voltage { get; set; }
+
         public BatteryViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
         {
             _component = new UIModel.Battery
@@ -26,10 +28,10 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 
         public override void ExecuteShowDataChangeWindowCommand(object parameter)
         {
-            var data = new BatteryData(Setting);
+            var data = new BatteryData(Voltage);
             if (OnConfirmation(data))
             {
-                this.Setting = data.Setting;
+                this.Voltage = data.Voltage;
             }
         }
     }
