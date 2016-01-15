@@ -40,8 +40,9 @@
             <ComboBox Margin="8,0,3,0"
                      Width="200"
                      ToolTip="Saved Diagrams"
-                      SelectedItem="{Binding CurrentDiagramId}"
+                      SelectedItem="{Binding SelectedDiagram}"
                      ItemsSource="{Binding SavedDiagrams}"
+                      DisplayMemberPath="Name"
                       Style="{StaticResource ComboBoxTemplate}"/>
             <Button ToolTip="Load Selected Diagram"
                     Content="Load"
