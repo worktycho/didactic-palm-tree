@@ -105,6 +105,11 @@ namespace UnitTests
             return _voltage;
         }
 
+        public double GetCurrent()
+        {
+            return 0;
+        }
+
         public ITerminal Bottom { get; }
         public ITerminal Top { get; }
         public double GetResistance()

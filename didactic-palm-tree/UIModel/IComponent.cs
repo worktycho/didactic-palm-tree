@@ -12,6 +12,7 @@ using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using didactic_palm_tree.Simulation;
 using IComponent = didactic_palm_tree.Simulation.IComponent;
 
 namespace didactic_palm_tree.UIModel
@@ -47,6 +48,11 @@ namespace didactic_palm_tree.UIModel
         }
 
         public float GetVoltageDrop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public float GetCurrent()
         {
             throw new NotImplementedException();
         }

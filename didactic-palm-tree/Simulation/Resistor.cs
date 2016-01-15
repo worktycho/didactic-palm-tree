@@ -24,6 +24,11 @@ namespace didactic_palm_tree.Simulation
             return (Top.Voltage - Bottom.Voltage)/Resistance;
         }
 
+        public double GetCurrent()
+        {
+            return 0;
+        }
+
         public ITerminal Bottom { get; set; }
         public ITerminal Top { get; set; }
         public double GetResistance()
