@@ -150,7 +150,7 @@ namespace didactic_palm_tree.Simulation
             return aMatrix;
         }
 
-        public SparseMatrix CreateIMatrix(List<IConnection> connections, List<IConnection> currentSources)
+        public SparseMatrix CreateIMatrix(List<IConnection> connections)
         {
             var iMatrix = new SparseMatrix(connections.Count, 1);
             /*for (var i = 0; i < connections.Count; i++)
@@ -186,7 +186,7 @@ namespace didactic_palm_tree.Simulation
 
         public SparseMatrix CreateZMatrix(List<IConnection> connections, List<Battery> voltageSources)
         {
-            var iMatrix = CreateIMatrix(connections, new List<IConnection>());
+            var iMatrix = CreateIMatrix(connections);
             var eMatrix = CreateEMatrix(voltageSources);
             var zMatrix = new SparseMatrix(connections.Count + voltageSources.Count, 1);
             var k = 0;

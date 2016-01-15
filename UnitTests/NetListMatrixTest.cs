@@ -124,7 +124,6 @@ namespace UnitTests
                 {0 }
             });
             var testConnections = new List<IConnection>();
-            var testCurrentSources = new List<IConnection>();
             var test = new NetList();
             var testResistComponent = new Resistor(1, test);
             var testBatteryComponent = new Battery(1);
@@ -132,7 +131,7 @@ namespace UnitTests
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
             test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
-            Assert.AreEqual(expectedMatrix, test.CreateIMatrix(testConnections, testCurrentSources));
+            Assert.AreEqual(expectedMatrix, test.CreateIMatrix(testConnections));
         }
 
         [TestMethod]

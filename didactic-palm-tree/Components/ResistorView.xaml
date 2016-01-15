@@ -1,6 +1,0 @@
-﻿<Window x:Class="didactic_palm_tree.Components.ResistorView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ResistorView" Height="300" Width="300">
-    <Image Source="pack://application:,,,/Resources/Resistor.png" />
-</Window>
