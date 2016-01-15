@@ -20,7 +20,7 @@
                     Command="{Binding DeleteSelectedItemsCommand}" />
     </Window.InputBindings>
 
-    <DockPanel Margin="0">
+    <DockPanel Margin="0" Style="{StaticResource DockPanelTemplate}">
         <ToolBar Height="35" DockPanel.Dock="Top" Style="{StaticResource ToolBarTemplate}">
             <Button ToolTip="New"
                     Content="New"
