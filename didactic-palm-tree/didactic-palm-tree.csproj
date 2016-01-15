@@ -172,6 +172,7 @@
     <Compile Include="Views\Components\ViewModels\ResistorViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\SwitchViewModel.cs" />
     <Compile Include="Views\Components\ViewModels\VoltmeterViewModel.cs" />
+    <Compile Include="Views\Converter\BulbImageConverter.cs" />
     <Compile Include="Views\ToolBoxViewModel.cs" />
     <Compile Include="Views\Util\ApplicationServicesProvider.cs" />
     <Compile Include="Views\Util\IMessageBoxService.cs" />
@@ -319,9 +320,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DiagramDesigner\DiagramDesigner.csproj">
       <Project>{74872a86-6809-476b-95ab-6f3512317059}</Project>

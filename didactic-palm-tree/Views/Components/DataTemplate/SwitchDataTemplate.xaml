@@ -8,11 +8,20 @@
         <Grid>
             <Image IsHitTestVisible="False"
                     Stretch="Fill"
-                    Source="../../../Resources/Switch_Off.png"
-                    Tag="setting" />
-            <Button HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Margin="5" />
+                    Tag="setting" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsOn}" Value="True">
+                                <Setter Property="Source" Value="../../../Resources/Switch_On.png"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsOn}" Value="False">
+                                <Setter Property="Source" Value="../../../Resources/Switch_Off.png"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
         </Grid>
     </DataTemplate>
 
