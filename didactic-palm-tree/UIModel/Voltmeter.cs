@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using didactic_palm_tree.Simulation;
 using didactic_palm_tree.Views.Components.Abstract;
 using didactic_palm_tree.Views.Components.ViewModels;
 using DiagramDesigner;
@@ -7,10 +9,18 @@ namespace didactic_palm_tree.UIModel
 {
     internal class Voltmeter : Component
     {
-
-        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
+        public Voltmeter(Diagram diagram)
         {
-            return new VoltmeterViewModel(parent, Left, Top) {Model = this};
+            this.SimComponent = new Simulation.Resistor(int.MaxValue, diagram.NetList);
+        }
+
+        public Voltmeter()
+        {
+            
+        }
+        public override ComponentViewModel CreateViewModel(Diagram diagram, DiagramViewModel parent)
+        {
+            return new VoltmeterViewModel(diagram, parent, Left, Top) {Model = this};
         }
     }
 }

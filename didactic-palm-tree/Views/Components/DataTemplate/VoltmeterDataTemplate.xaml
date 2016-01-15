@@ -12,25 +12,28 @@
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="5" />
+                    Margin="5" 
+                    Template="{StaticResource infoButtonTemplate}" 
+                    Command="{Binding ShowDataChangeWindowCommand}" />
         </Grid>
     </DataTemplate>
 
     <!-- DataTemplate for Popup look and feel -->
     <DataTemplate DataType="{x:Type data:VoltmeterData}">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0"
-                    Content="Setting1"
+                   Grid.Column="0"
+                    Content="Voltage: "
                     Margin="5" />
-            <TextBox Grid.Row="1"
-                        HorizontalAlignment="Left"
-                        Width="150"
-                        Margin="5" />
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Voltage}"></Label>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

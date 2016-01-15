@@ -29,7 +29,7 @@ namespace didactic_palm_tree.UIModel
             get; private set;
         }
 
-        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
+        public override ComponentViewModel CreateViewModel(Diagram diagram, DiagramViewModel parent)
         {
             return new ResistorViewModel(parent, Left, Top) {Model = this};
         }

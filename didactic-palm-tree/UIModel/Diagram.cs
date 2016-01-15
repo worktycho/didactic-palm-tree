@@ -9,37 +9,43 @@ using System.Windows;
 using System.Data;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SQLite;
+using didactic_palm_tree.Simulation;
 using DiagramDesigner;
 
 namespace didactic_palm_tree.UIModel
 {
     public class Diagram
     {
+        [NotMapped]
         private CircuitContext _context;
+        [Key]
         public Guid Id { get; set; }
 
-        public Diagram(CircuitContext context, string name)
+        public Diagram(CircuitContext context, string name) : this()
         {
             _context = context;
             Name = name;
-            Id = Guid.NewGuid();
         }
 
         public Diagram()
         {
             Id = Guid.NewGuid();
+            NetList = new NetList();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [NotMapped]
         public IEnumerable<Component> Components => _context.Components.Where(x => x.Diagram.Id == this.Id);
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [NotMapped]
         public IEnumerable<Wire> Connectors => _context.Connectors.Where(x => x.Diagram.Id == this.Id);
 
         public string Name
         {
             get; set; }
+
+        public NetList NetList { get; private set; }
 
         public Component Add(Component component)
         {
@@ -49,6 +55,7 @@ namespace didactic_palm_tree.UIModel
                 _context.Components.Add(component);
                 return component;
             }
+            NetList.Add(component.SimComponent);
             return _context.Components.First(x => x.Id == component.Id);
         }
 

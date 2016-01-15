@@ -68,8 +68,11 @@ namespace didactic_palm_tree.Views
             {
                 var connector = item as ConnectorViewModel;
                 if (connector == null) continue;
-                CurrentDiagram.Remove(ConnectorModels[connector]);
-                ConnectorModels.Remove(connector);
+                if (ConnectorModels.ContainsKey(connector))
+                {
+                    CurrentDiagram.Remove(ConnectorModels[connector]);
+                    ConnectorModels.Remove(connector);
+                }
             }
         }
 
@@ -82,6 +85,7 @@ namespace didactic_palm_tree.Views
                 if (!(item is ConnectorViewModel))
                 {
                     var viewModel = (ComponentViewModel) item;
+                    if (viewModel.Model == null) viewModel.Model = new Voltmeter(CurrentDiagram);
                     viewModel.Model = CurrentDiagram.Add(viewModel.Model);
                 }
                 else
@@ -210,7 +214,7 @@ namespace didactic_palm_tree.Views
             ComponentViewModels.Clear();
             foreach (var component in CurrentDiagram.Components)
             {
-                var viewmodel = component.CreateViewModel(DiagramViewModel);
+                var viewmodel = component.CreateViewModel(CurrentDiagram, DiagramViewModel);
                 ComponentViewModels.Add(component.Id, viewmodel);
                 DiagramViewModel.Items.Add(viewmodel);
             }

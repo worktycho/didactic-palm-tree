@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,8 @@ using System.Windows.Documents;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using IComponent = didactic_palm_tree.Simulation.IComponent;
 
 namespace didactic_palm_tree.UIModel
 {
@@ -22,18 +25,30 @@ namespace didactic_palm_tree.UIModel
         public double Top { get; set; }
         public Diagram Diagram { get; set; }
 
+        public IComponent SimComponent { get; protected set; }
+
         public Component()
         {
             Id = Guid.NewGuid();
         }
 
-        public abstract ComponentViewModel CreateViewModel(DiagramViewModel parent);
+        public abstract ComponentViewModel CreateViewModel(Diagram diagram, DiagramViewModel parent);
 
         public void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var viewmodel = (ComponentViewModel) sender;
             Left = viewmodel.Left;
             Top = viewmodel.Top;
+        }
+
+        public void Simulate()
+        {
+            this.SimComponent.Simulate();
+        }
+
+        public float GetVoltageDrop()
+        {
+            throw new NotImplementedException();
         }
     }
 }

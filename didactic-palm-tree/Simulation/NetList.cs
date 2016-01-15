@@ -5,14 +5,27 @@ using System.Linq;
 using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using StarMathLib;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace didactic_palm_tree.Simulation
 {
+    [Table("NetList")]
     public class NetList
     {
-        public void Add(IComponent simTestComponent)
+        public Guid Id { get; set; }
+        public List<IComponent> Components { get; set; }
+
+        public NetList()
         {
+            Id = Guid.NewGuid();
+            Components = new List<IComponent>();
+        }
+
+        public void Add(IComponent component)
+        {
+            Components.Add(component);
         }
 
         public void Simulate()
@@ -229,8 +242,7 @@ namespace didactic_palm_tree.Simulation
 
         public IEnumerable<IComponent> VoltageSources()
         {
-            var connections = new List<IComponent>();
-            return connections.Where(x => x.IsVoltageSource());
+            return Components.Where(x => x.IsVoltageSource());
         } 
     }
 }

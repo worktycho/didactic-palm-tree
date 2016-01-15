@@ -27,7 +27,7 @@ namespace didactic_palm_tree.UIModel
         public IObservable<string> Voltage { get; set; }
         public IObservable<string> Current { get; set; }
 
-        public override ComponentViewModel CreateViewModel(DiagramViewModel parent)
+        public override ComponentViewModel CreateViewModel(Diagram diagram, DiagramViewModel parent)
         {
             return new BatteryViewModel(parent, Left, Top) {Model = this};
         }

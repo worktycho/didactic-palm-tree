@@ -34,5 +34,10 @@ namespace didactic_palm_tree.Simulation
         {
             throw new NotImplementedException();
         }
+
+        public void Simulate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

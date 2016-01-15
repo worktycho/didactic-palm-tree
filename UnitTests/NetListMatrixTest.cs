@@ -21,9 +21,9 @@ namespace UnitTests
                 
             };
             var testConnections = new List<IConnection>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -42,9 +42,9 @@ namespace UnitTests
             });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -63,9 +63,9 @@ namespace UnitTests
             });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -82,9 +82,9 @@ namespace UnitTests
                 {0 }
             });
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
-            var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
+            var testBatteryComponent = new Battery(1);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -104,9 +104,9 @@ namespace UnitTests
             });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -125,9 +125,9 @@ namespace UnitTests
             });
             var testConnections = new List<IConnection>();
             var testCurrentSources = new List<IConnection>();
-            var testResistComponent = new Resistor(1);
-            var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
+            var testBatteryComponent = new Battery(1);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -143,9 +143,9 @@ namespace UnitTests
 
             };
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -162,9 +162,9 @@ namespace UnitTests
             };
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
-            var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
+            var testBatteryComponent = new Battery(1);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -181,9 +181,9 @@ namespace UnitTests
             };
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -200,9 +200,9 @@ namespace UnitTests
             };
             var testXMatrix = new StarMathLib.SparseMatrix(4, 1);
             var testConnections = new List<IConnection>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -219,9 +219,9 @@ namespace UnitTests
             };
             var testXMatrix = new StarMathLib.SparseMatrix(4, 1);
             var testVoltageSources = new List<Battery>();
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);

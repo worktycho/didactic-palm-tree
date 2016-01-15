@@ -9,10 +9,12 @@ namespace didactic_palm_tree.Simulation
     public class Resistor : IComponent
     {
         private int Resistance;
+        private NetList _netlist;
 
-        public Resistor(int v)
+        public Resistor(int v, NetList netlist)
         {
             this.Resistance = v;
+            _netlist = netlist;
             this.Top = new Terminal(this);
             this.Bottom = new Terminal(this);
         }
@@ -32,6 +34,11 @@ namespace didactic_palm_tree.Simulation
         public bool IsVoltageSource()
         {
             throw new NotImplementedException();
+        }
+
+        public void Simulate()
+        {
+            _netlist.Simulate();
         }
     }
 }

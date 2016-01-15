@@ -116,6 +116,11 @@ namespace UnitTests
         {
             throw new NotImplementedException();
         }
+
+        public void Simulate()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class Terminal : ITerminal

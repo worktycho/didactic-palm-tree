@@ -10,9 +10,10 @@ namespace UnitTests
         [TestMethod]
         public void TestSingleResistors()
         {
-            var testResistComponent = new Resistor(1);
-            var testBatteryComponent = new Battery(1);
+
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
+            var testBatteryComponent = new Battery(1);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -23,9 +24,9 @@ namespace UnitTests
         [TestMethod]
         public void TestSingleResistors2()
         {
-            var testResistComponent = new Resistor(2);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
+            var testResistComponent = new Resistor(2, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
@@ -36,9 +37,9 @@ namespace UnitTests
         [TestMethod]
         public void TestSingleResistors3()
         {
-            var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(2);
             var test = new NetList();
+            var testResistComponent = new Resistor(1, test);
             test.Add(testResistComponent);
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
