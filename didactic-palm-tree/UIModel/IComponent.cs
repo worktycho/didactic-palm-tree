@@ -48,7 +48,9 @@ namespace didactic_palm_tree.UIModel
 
         public float GetVoltageDrop()
         {
-            throw new NotImplementedException();
+            return (float)this.SimComponent.GetVoltageDrop();
         }
+
+        public abstract void EnsureSimComponentExists(Diagram diagram);
     }
 }

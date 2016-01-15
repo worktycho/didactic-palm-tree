@@ -143,7 +143,7 @@ namespace didactic_palm_tree.Views
                 else
                 {
                     var componentViewModel = (ComponentViewModel) selectedItem;
-                    CurrentDiagram.Remove(componentViewModel.Model);
+                    if (CurrentDiagram != null) CurrentDiagram.Remove(componentViewModel.Model);
                 }
             }
         }
@@ -215,6 +215,7 @@ namespace didactic_palm_tree.Views
             foreach (var component in CurrentDiagram.Components)
             {
                 var viewmodel = component.CreateViewModel(CurrentDiagram, DiagramViewModel);
+                component.EnsureSimComponentExists(CurrentDiagram);
                 ComponentViewModels.Add(component.Id, viewmodel);
                 DiagramViewModel.Items.Add(viewmodel);
             }

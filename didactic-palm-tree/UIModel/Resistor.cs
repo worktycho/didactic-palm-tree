@@ -33,5 +33,10 @@ namespace didactic_palm_tree.UIModel
         {
             return new ResistorViewModel(parent, Left, Top) {Model = this};
         }
+
+        public override void EnsureSimComponentExists(Diagram diagram)
+        {
+            
+        }
     }
 }

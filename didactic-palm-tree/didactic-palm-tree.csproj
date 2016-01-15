@@ -113,21 +113,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CicuitContext.cs" />
-    <Compile Include="Components\AmmeterView.xaml.cs">
-      <DependentUpon>AmmeterView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\BatteryView.xaml.cs">
-      <DependentUpon>BatteryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\BulbView.xaml.cs">
-      <DependentUpon>BulbView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\ResistorView.xaml.cs">
-      <DependentUpon>ResistorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\VoltmeterView.xaml.cs">
-      <DependentUpon>VoltmeterView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -183,26 +168,6 @@
     <Compile Include="Views\Util\WPFMessageBoxService.cs" />
     <Compile Include="Views\Util\WPFUIVisualizerService.cs" />
     <Compile Include="Views\WindowViewModel.cs" />
-    <Page Include="Components\AmmeterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Components\BatteryView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Components\BulbView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Components\ResistorView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Components\VoltmeterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
