@@ -17,7 +17,7 @@ namespace UnitTests
         {
             var expectedMatrix = new StarMathLib.SparseMatrix(2, 2)
             {
-
+                
             };
             var testConnections = new List<IConnection>();
             var testResistComponent = new Resistor(1);
@@ -34,10 +34,11 @@ namespace UnitTests
         [TestMethod]
         public void TestBMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix(1, 2)
+            var expectedMatrix = new StarMathLib.SparseMatrix(1, 2);
+            expectedMatrix.add(new double[1,2]
             {
-
-            };
+                {1, -1 }
+            });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
             var testResistComponent = new Resistor(1);
@@ -53,10 +54,12 @@ namespace UnitTests
         [TestMethod]
         public void TestCMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix(2, 1)
+            var expectedMatrix = new StarMathLib.SparseMatrix(2, 1);
+            expectedMatrix.add(new double[2, 1]
             {
-
-            };
+                {0},
+                {0}
+            });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
             var testResistComponent = new Resistor(1);
@@ -72,10 +75,11 @@ namespace UnitTests
         [TestMethod]
         public void TestDMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix(1, 1)
+            var expectedMatrix = new StarMathLib.SparseMatrix(1, 1);
+            expectedMatrix.add(new double[1, 1]
             {
-
-            };
+                {0 }
+            });
             var testVoltageSources = new List<Battery>();
             var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
@@ -90,10 +94,13 @@ namespace UnitTests
         [TestMethod]
         public void TestAMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix(3, 3)
+            var expectedMatrix = new StarMathLib.SparseMatrix(3, 3);
+            expectedMatrix.add(new double[3, 3]
             {
-
-            };
+                {0, 0, 1},
+                {0, 0, -1},
+                {0, 0, 0 }
+            });
             var testConnections = new List<IConnection>();
             var testVoltageSources = new List<Battery>();
             var testResistComponent = new Resistor(1);
@@ -109,10 +116,12 @@ namespace UnitTests
         [TestMethod]
         public void TestIMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix(2, 1)
+            var expectedMatrix = new StarMathLib.SparseMatrix(2, 1);
+            expectedMatrix.add(new double[2, 1]
             {
-
-            };
+                {0 },
+                {0 }
+            });
             var testConnections = new List<IConnection>();
             var testCurrentSources = new List<IConnection>();
             var testResistComponent = new Resistor(1);
