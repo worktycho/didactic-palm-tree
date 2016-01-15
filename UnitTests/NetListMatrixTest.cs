@@ -4,7 +4,6 @@ using didactic_palm_tree.Simulation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using didactic_palm_tree.Simulation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StarMathLib;
 
@@ -28,7 +27,7 @@ namespace UnitTests
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
             test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
-            Assert.AreEqual(expectedMatrix, test.CreateGMatrix(testConnections))
+            Assert.AreEqual(expectedMatrix, test.CreateGMatrix(testConnections));
 
         }
 
@@ -48,7 +47,7 @@ namespace UnitTests
             test.Add(testBatteryComponent);
             test.AddConnection(testBatteryComponent.Bottom, testResistComponent.Top);
             test.AddConnection(testBatteryComponent.Top, testResistComponent.Bottom);
-            Assert.AreEqual(expectedMatrix, test.CreateBMatrix(testVoltageSources, testConnections));
+            Assert.AreEqual(expectedMatrix, test.CreateBMatrix(testConnections, testVoltageSources));
         }
 
         [TestMethod]
@@ -115,7 +114,7 @@ namespace UnitTests
 
             };
             var testConnections = new List<IConnection>();
-            var testCurrentSources = new List<Resistor>();
+            var testCurrentSources = new List<IConnection>();
             var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
             var test = new NetList();
@@ -166,7 +165,7 @@ namespace UnitTests
         [TestMethod]
         public void TestXMatrix()
         {
-            var expectedMatrix = new StarMathLib.SparseMatrix()
+            var expectedMatrix = new StarMathLib.SparseMatrix(4, 1)
             {
 
             };
@@ -189,7 +188,7 @@ namespace UnitTests
             {
 
             };
-            var testXMatrix = new StarMathLib.SparseMatrix()
+            var testXMatrix = new StarMathLib.SparseMatrix(4, 1);
             var testConnections = new List<IConnection>();
             var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
@@ -208,7 +207,7 @@ namespace UnitTests
             {
 
             };
-            var testXMatrix = new StarMathLib.SparseMatrix()
+            var testXMatrix = new StarMathLib.SparseMatrix(4, 1);
             var testVoltageSources = new List<Battery>();
             var testResistComponent = new Resistor(1);
             var testBatteryComponent = new Battery(1);
