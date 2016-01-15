@@ -226,5 +226,11 @@ namespace didactic_palm_tree.Simulation
             //top.Voltage = top.GetComponent().GetVoltageDrop() + bottom.GetComponent().GetVoltageDrop();
             //bottom.Voltage = top.Voltage;
         }
+
+        public IEnumerable<IComponent> VoltageSources()
+        {
+            var connections = new List<IComponent>();
+            return connections.Where(x => x.IsVoltageSource());
+        } 
     }
 }

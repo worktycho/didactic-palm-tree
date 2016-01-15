@@ -29,5 +29,10 @@ namespace didactic_palm_tree.Simulation
         {
             throw new NotImplementedException();
         }
+
+        public bool IsVoltageSource()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
