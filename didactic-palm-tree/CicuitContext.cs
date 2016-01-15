@@ -9,6 +9,7 @@ namespace didactic_palm_tree
     {
         public DbSet<UIModel.Component> Components { get; set; }
         public DbSet<UIModel.Wire> Connectors { get; set; }
+        public DbSet<UIModel.Diagram> Diagrams { get; set; }
 
         public CircuitContext(SQLiteConnection connection) : base(connection, true)
         {

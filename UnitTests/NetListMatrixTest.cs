@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using didactic_palm_tree.Simulation;
 using System.Linq;

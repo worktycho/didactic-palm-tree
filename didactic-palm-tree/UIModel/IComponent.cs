@@ -20,6 +20,7 @@ namespace didactic_palm_tree.UIModel
         public Guid Id { get; set; }
         public double Left { get; set; }
         public double Top { get; set; }
+        public Diagram Diagram { get; set; }
 
         public Component()
         {

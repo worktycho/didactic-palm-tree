@@ -9,6 +9,7 @@ using System.Windows;
 using System.Data;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SQLite;
 using DiagramDesigner;
 
@@ -17,17 +18,32 @@ namespace didactic_palm_tree.UIModel
     public class Diagram
     {
         private CircuitContext _context;
+        public Guid Id { get; set; }
 
-        public Diagram(CircuitContext context)
+        public Diagram(CircuitContext context, string name)
         {
             _context = context;
+            Name = name;
+            Id = Guid.NewGuid();
         }
 
-        public IEnumerable<Component> Components => _context.Components;
-        public IEnumerable<Wire> Connectors => _context.Connectors;
+        public Diagram()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public IEnumerable<Component> Components => _context.Components.Where(x => x.Diagram.Id == this.Id);
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public IEnumerable<Wire> Connectors => _context.Connectors.Where(x => x.Diagram.Id == this.Id);
+
+        public string Name
+        {
+            get; set; }
 
         public Component Add(Component component)
         {
+            component.Diagram = this;
             if (!_context.Components.Any(x => x.Id == component.Id))
             {
                 _context.Components.Add(component);
@@ -41,20 +57,21 @@ namespace didactic_palm_tree.UIModel
             _context.Components.Remove(component);
         }
 
-        public static Diagram CreateNew(string testSql)
+        public static Diagram CreateNew(CircuitContext context, string name)
         {/*
             var connectionStringBuilder = new SQLiteConnectionStringBuilder { DataSource = testSql };
             var connectionString = connectionStringBuilder.ToString();
             var connection = new SQLiteConnection(connectionString);
             var context = new CircuitContext(connection);
             */
-            var context = new CircuitContext();
-            Diagram diagram = new Diagram(context);
+            Diagram diagram = new Diagram(context, name);
             diagram._context.Database.CreateIfNotExists();
+            diagram._context.Diagrams.Add(diagram);
+            diagram._context.SaveChanges();
             return diagram;
         }
 
-        public static Diagram Load(string file)
+        public static Diagram Load(string name)
         {
             /*
             var connectionStringBuilder = new SQLiteConnectionStringBuilder { DataSource = file };
@@ -63,7 +80,7 @@ namespace didactic_palm_tree.UIModel
             var context = new CircuitContext(connection
             */
             var context = new CircuitContext();
-            Diagram diagram = new Diagram(context);
+            Diagram diagram = new Diagram(context, name);
             diagram._context.Database.CreateIfNotExists();
             return diagram;
         }
@@ -86,6 +103,10 @@ namespace didactic_palm_tree.UIModel
         {
             _context.Connectors.Remove(connector);
         }
-        
+
+        public void SetContext(CircuitContext context)
+        {
+            _context = context;
+        }
     }
 }
