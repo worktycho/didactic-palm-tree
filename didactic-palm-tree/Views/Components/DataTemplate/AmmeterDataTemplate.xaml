@@ -21,18 +21,18 @@
     <!-- DataTemplate for Popup look and feel -->
     <DataTemplate DataType="{x:Type data:AmmeterData}">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0"
-                    Content="Setting1"
+                    Content="Content: "
                     Margin="5" />
-            <TextBox Grid.Row="1"
-                        HorizontalAlignment="Left"
-                        Width="150"
-                        Margin="5" />
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Current}"></Label>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>
