@@ -12,7 +12,9 @@
                     Tag="setting" />
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Margin="5" />
+                    Margin="5" 
+                    Template="{StaticResource infoButtonTemplate}" 
+                    Command="{Binding ShowDataChangeWindowCommand}" />
         </Grid>
     </DataTemplate>
 

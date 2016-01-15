@@ -32,8 +32,6 @@ namespace didactic_palm_tree.Views.Components.Abstract
             Init();
         }
 
-        public string Setting { get; set; }
-
         public Component Model
         {
             get { return _model; }
