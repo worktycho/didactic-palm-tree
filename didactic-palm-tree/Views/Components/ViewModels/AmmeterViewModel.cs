@@ -6,6 +6,8 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 {
     public class AmmeterViewModel : ComponentViewModel
     {
+        public float Current { get; set; }
+
         public AmmeterViewModel(DiagramViewModel parent, double left, double top) : base(parent, left, top)
         {
            Model = new UIModel.Ammeter();
@@ -18,7 +20,7 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 
         public override void ExecuteShowDataChangeWindowCommand(object paramter)
         {
-            var data = new AmmeterData();
+            var data = new AmmeterData(Current);
             Model.Simulate();
             data.Current = Model.GetCurrent();
             OnConfirmation(data);
