@@ -12,6 +12,7 @@ namespace didactic_palm_tree.UIModel
         public Component Sink { get; set; }
         public ConnectorOrientation SourceOrientation { get; set; }
         public ConnectorOrientation SinkOrientation { get; set; }
+        public Diagram Diagram { get; set; }
 
         public Wire()
         {

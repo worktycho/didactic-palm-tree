@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using didactic_palm_tree.UIModel;
@@ -16,7 +17,8 @@ namespace didactic_palm_tree.Views
 
         public Dictionary<ConnectorViewModel, Wire> ConnectorModels = new Dictionary<ConnectorViewModel, Wire>();
         public List<SelectableDesignerItemViewModelBase> ItemsToRemove;
-        public Diagram model;
+        private CircuitContext _context;
+        public Diagram CurrentDiagram { get; set; }
 
         public WindowViewModel()
         {
@@ -24,13 +26,13 @@ namespace didactic_palm_tree.Views
             ToolBoxViewModel = new ToolBoxViewModel();
             DiagramViewModel = new DiagramViewModel();
 
-            ExecuteCreateNewDiagramCommand(null);
+            _context = new CircuitContext();
+            SavedDiagrams = _context.Diagrams.ToList();
+            CurrentDiagram = null;
 
             DiagramViewModel.Items.CollectionChanged += ItemsOnCollectionChanged;
 
             ConnectorViewModel.PathFinder = new OrthogonalPathFinder();
-
-            ExecuteLoadDiagramCommand(null);
 
             DeleteSelectedItemsCommand = new SimpleCommand(ExecuteDeleteSelectedItemsCommand);
             CreateNewDiagramCommand = new SimpleCommand(ExecuteCreateNewDiagramCommand);
@@ -50,8 +52,7 @@ namespace didactic_palm_tree.Views
 
         // UTILITIES
         public bool IsBusy { get; set; }
-        public int? CurrentDiagramId { get; set; }
-        public List<int> SavedDiagrams { get; set; }
+        public List<Diagram> SavedDiagrams { get; set; }
 
         private void ItemsOnCollectionChanged(object sender,
             NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
@@ -67,20 +68,21 @@ namespace didactic_palm_tree.Views
             {
                 var connector = item as ConnectorViewModel;
                 if (connector == null) continue;
-                model.Remove(ConnectorModels[connector]);
+                CurrentDiagram.Remove(ConnectorModels[connector]);
                 ConnectorModels.Remove(connector);
             }
         }
 
         private void HandleNewItems(NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
+            if (CurrentDiagram == null) return;
             if (notifyCollectionChangedEventArgs.NewItems == null) return;
             foreach (var item in notifyCollectionChangedEventArgs.NewItems)
             {
                 if (!(item is ConnectorViewModel))
                 {
                     var viewModel = (ComponentViewModel) item;
-                    viewModel.Model = model.Add(viewModel.Model);
+                    viewModel.Model = CurrentDiagram.Add(viewModel.Model);
                 }
                 else
                 {
@@ -89,7 +91,8 @@ namespace didactic_palm_tree.Views
                     ConnectorModels.Add(connector, new Wire()
                     {
                         Source = ((ComponentViewModel) connector.SourceConnectorInfo.DataItem).Model,
-                        SourceOrientation = connector.SourceConnectorInfo.Orientation
+                        SourceOrientation = connector.SourceConnectorInfo.Orientation,
+                        Diagram = CurrentDiagram
                     });
                     var sinkConnector = connector.SinkConnectorInfo as FullyCreatedConnectorInfo;
                     if (sinkConnector != null)
@@ -97,7 +100,7 @@ namespace didactic_palm_tree.Views
                         ConnectorModels[connector].Sink = ((ComponentViewModel) sinkConnector.DataItem).Model;
                         ConnectorModels[connector].SinkOrientation = sinkConnector.Orientation;
                     }
-                    model.Add(ConnectorModels[connector]);
+                    CurrentDiagram.Add(ConnectorModels[connector]);
                 }
             }
         }
@@ -136,7 +139,7 @@ namespace didactic_palm_tree.Views
                 else
                 {
                     var componentViewModel = (ComponentViewModel) selectedItem;
-                    model.Remove(componentViewModel.Model);
+                    CurrentDiagram.Remove(componentViewModel.Model);
                 }
             }
         }
@@ -149,8 +152,21 @@ namespace didactic_palm_tree.Views
             3. Use DiagramViewModel.CreateNewDiagram.Execute(null) to create it
             */
             ItemsToRemove = new List<SelectableDesignerItemViewModelBase>();
-            CurrentDiagramId = null;
+            CurrentDiagram = null;
             DiagramViewModel.CreateNewDiagramCommand.Execute(null);
+            var dialog = new NewDiagram();
+            dialog.ShowDialog();
+            var result = dialog.DialogResult;
+            if (!result.HasValue || !result.Value)
+            {
+                return;
+            }
+            var name = dialog.DialogName;
+            CurrentDiagram = Diagram.CreateNew(_context, name);
+            SelectedDiagram = CurrentDiagram;
+            SavedDiagrams = _context.Diagrams.ToList();
+            this.NotifyChanged("SavedDiagrams");
+            LoadDiagramItems();
         }
 
         private void ExecuteSaveDiagramCommand(object parameter)
@@ -166,7 +182,7 @@ namespace didactic_palm_tree.Views
             4. Set to NOT BUSY
             */
 
-            model.Save();
+            CurrentDiagram.Save();
         }
 
         private void ExecuteLoadDiagramCommand(object parameter)
@@ -181,21 +197,29 @@ namespace didactic_palm_tree.Views
             4. Set to NOT BUSY
             */
 
+            CurrentDiagram = this.SelectedDiagram;
+            CurrentDiagram.SetContext(_context);
+            LoadDiagramItems();
+        }
+
+        public Diagram SelectedDiagram { get; set; }
+
+        private void LoadDiagramItems()
+        {
             DiagramViewModel.Items.Clear();
-            model = Diagram.Load("test.sql");
             ComponentViewModels.Clear();
-            foreach (var component in model.Components)
+            foreach (var component in CurrentDiagram.Components)
             {
                 var viewmodel = component.CreateViewModel(DiagramViewModel);
                 ComponentViewModels.Add(component.Id, viewmodel);
                 DiagramViewModel.Items.Add(viewmodel);
             }
             ConnectorModels.Clear();
-            foreach (var connector in model.Connectors)
+            foreach (var connector in CurrentDiagram.Connectors)
             {
                 if (connector.Source == null)
                 {
-                    model.Remove(connector);
+                    CurrentDiagram.Remove(connector);
                     continue;
                 }
                 ConnectorInfoBase sinkInfo;
@@ -210,7 +234,8 @@ namespace didactic_palm_tree.Views
                 }
                 var viewmodel =
                     new ConnectorViewModel(
-                        new FullyCreatedConnectorInfo(ComponentViewModels[connector.Source.Id], connector.SourceOrientation),sinkInfo);
+                        new FullyCreatedConnectorInfo(ComponentViewModels[connector.Source.Id], connector.SourceOrientation),
+                        sinkInfo);
                 ConnectorModels.Add(viewmodel, connector);
                 DiagramViewModel.AddConnector(viewmodel);
             }
