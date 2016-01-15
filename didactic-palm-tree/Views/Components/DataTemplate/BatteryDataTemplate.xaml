@@ -27,11 +27,11 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0"
-                   Content="HostUrl"
+                   Content="Voltage"
                    Margin="5" />
             <TextBox Grid.Row="1"
                     HorizontalAlignment="Left"
-                    Text="{Binding HostUrl}"
+                    Text="{Binding Voltage}"
                     Width="150"
                     Margin="5" />
         </Grid>

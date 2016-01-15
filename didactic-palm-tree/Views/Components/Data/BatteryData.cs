@@ -6,11 +6,9 @@ namespace didactic_palm_tree.Views.Components.Data
     {
         public float Voltage { get; set; }
 
-        public string Setting { get; set; }
-
-        public BatteryData(string setting)
+        public BatteryData(float voltage)
         {
-            this.Setting = setting;
+            this.Voltage = voltage;
         }
     }
 }

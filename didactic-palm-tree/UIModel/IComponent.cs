@@ -12,6 +12,7 @@ using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using didactic_palm_tree.Simulation;
 using IComponent = didactic_palm_tree.Simulation.IComponent;
 
 namespace didactic_palm_tree.UIModel
@@ -40,7 +41,7 @@ namespace didactic_palm_tree.UIModel
             Left = viewmodel.Left;
             Top = viewmodel.Top;
         }
-
+ 
         public void Simulate()
         {
             this.SimComponent.Simulate();
@@ -51,6 +52,10 @@ namespace didactic_palm_tree.UIModel
             return (float)this.SimComponent.GetVoltageDrop();
         }
 
+        public float GetCurrent()
+        {
+            throw new NotImplementedException();
+        }
         public abstract void EnsureSimComponentExists(Diagram diagram);
     }
 }

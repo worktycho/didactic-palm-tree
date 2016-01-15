@@ -1,7 +1,8 @@
-﻿using System.Windows.Input;
-using didactic_palm_tree.UIModel;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using didactic_palm_tree.Views.Util;
 using DiagramDesigner;
+using Component = didactic_palm_tree.UIModel.Component;
 
 namespace didactic_palm_tree.Views.Components.Abstract
 {
@@ -31,8 +32,6 @@ namespace didactic_palm_tree.Views.Components.Abstract
             Top = top;
             Init();
         }
-
-        public string Setting { get; set; }
 
         public Component Model
         {

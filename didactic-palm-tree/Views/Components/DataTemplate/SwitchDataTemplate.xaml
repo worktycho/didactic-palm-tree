@@ -22,24 +22,11 @@
                     </Style>
                 </Image.Style>
             </Image>
-        </Grid>
-    </DataTemplate>
-
-    <!-- DataTemplate for Popup look and feel -->
-    <DataTemplate DataType="{x:Type data:SwitchData}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <Label Grid.Row="0"
-                    Content="Setting1"
-                    Margin="5" />
-            <TextBox Grid.Row="1"
-                        HorizontalAlignment="Left"
-                        Width="150"
-                        Margin="5" />
+            <Button HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="5" 
+                    Template="{StaticResource infoButtonTemplate}" 
+                    Command="{Binding ShowDataChangeWindowCommand}" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

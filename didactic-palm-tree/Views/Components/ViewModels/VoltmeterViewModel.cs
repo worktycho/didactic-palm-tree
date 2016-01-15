@@ -19,11 +19,9 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 
         public override void ExecuteShowDataChangeWindowCommand(object paramter)
         {
-
             var data = new VoltmeterData();
             Model.Simulate();
             data.Voltage = Model.GetVoltageDrop();
-            OnConfirmation(data);
         }
     }
 }

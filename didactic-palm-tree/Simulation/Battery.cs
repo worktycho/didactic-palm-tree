@@ -22,6 +22,11 @@ namespace didactic_palm_tree.Simulation
             return v;
         }
 
+        public double GetCurrent()
+        {
+            return 0;
+        }
+
         public ITerminal Bottom { get; set; }
         public ITerminal Top { get; set; }
         public double Voltage { get; set; } // Voltage getter setter

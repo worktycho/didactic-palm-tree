@@ -21,7 +21,7 @@ namespace didactic_palm_tree.Views.Components.ViewModels
 
         public override void ExecuteShowDataChangeWindowCommand(object paramter)
         {
-
+            NotifyChanged("IsOn");
         }
     }
 }

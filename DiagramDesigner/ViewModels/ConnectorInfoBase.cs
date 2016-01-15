@@ -18,14 +18,10 @@ namespace DiagramDesigner
 
         public ConnectorOrientation Orientation { get; private set; }
 
-        public static double ConnectorWidth
-        {
-            get { return connectorWidth; }
-        }
+        public static double ConnectorWidth { get; } = -15;
 
-        public static double ConnectorHeight
-        {
-            get { return connectorHeight; }
-        }
+        public static double ConnectorHeight {get;} = -15;
+
+
     }
 }
