@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using didactic_palm_tree.Simulation;
 using didactic_palm_tree.UIModel;
 using didactic_palm_tree.Views.Components.Abstract;
 using DiagramDesigner;
@@ -243,6 +244,7 @@ namespace didactic_palm_tree.Views
                         sinkInfo);
                 ConnectorModels.Add(viewmodel, connector);
                 DiagramViewModel.AddConnector(viewmodel);
+                CurrentDiagram.Add(ConnectorModels[viewmodel]);
             }
         }
 

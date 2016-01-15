@@ -123,6 +123,7 @@
     <Compile Include="NewDiagram.xaml.cs">
       <DependentUpon>NewDiagram.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Simulation\Connection.cs" />
     <Compile Include="ToolBoxControl.xaml.cs">
       <DependentUpon>ToolBoxControl.xaml</DependentUpon>
     </Compile>

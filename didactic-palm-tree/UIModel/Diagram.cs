@@ -21,6 +21,7 @@ namespace didactic_palm_tree.UIModel
     {
         [NotMapped]
         private CircuitContext _context;
+
         [Key]
         public Guid Id { get; set; }
 
@@ -104,6 +105,9 @@ namespace didactic_palm_tree.UIModel
             {
                 _context.Connectors.Add(connector);
             }
+            if (connector.Sink == null) return;
+            connector.CreateTerminals();
+            NetList.AddConnection(connector.SourceTerminal, connector.SinkTerminal);
         }
 
         internal void Remove(Wire connector)

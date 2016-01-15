@@ -34,7 +34,7 @@ namespace didactic_palm_tree.UIModel
 
         public override void EnsureSimComponentExists(Diagram diagram)
         {
-          
+            this.SimComponent = new Simulation.Battery(1);
         }
     }
 }

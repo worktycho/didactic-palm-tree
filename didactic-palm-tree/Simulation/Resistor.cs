@@ -28,12 +28,12 @@ namespace didactic_palm_tree.Simulation
         public ITerminal Top { get; set; }
         public double GetResistance()
         {
-            throw new NotImplementedException();
+            return Resistance;
         }
 
         public bool IsVoltageSource()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void Simulate()

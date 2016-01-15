@@ -10,10 +10,7 @@
         }
 
         public double Voltage { get; set; }
-        public IConnection GetConnection()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IConnection Connection { get; set; }
 
         public IComponent GetComponent()
         {

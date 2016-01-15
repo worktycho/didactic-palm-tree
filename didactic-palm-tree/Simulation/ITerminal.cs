@@ -3,7 +3,7 @@
     public interface ITerminal
     {
         double Voltage { get; set; }
-        IConnection GetConnection();
+        IConnection Connection { get; set; }
         IComponent GetComponent();
     }
 }

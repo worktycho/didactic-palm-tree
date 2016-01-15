@@ -14,6 +14,7 @@ namespace didactic_palm_tree.Simulation
     [Table("NetList")]
     public class NetList
     {
+        private List<IConnection> _connections = new List<IConnection>();
         public Guid Id { get; set; }
         public List<IComponent> Components { get; set; }
 
@@ -25,39 +26,28 @@ namespace didactic_palm_tree.Simulation
 
         public void Add(IComponent component)
         {
+            if (component == null) throw new ArgumentException();
             Components.Add(component);
         }
 
         public void Simulate()
         {
-            var connections = new List<IConnection>();
-            var gMatrix = new StarMathLib.SparseMatrix(connections.Count, connections.Count);
-            // Assuming one battery
-            var bMatrix = new StarMathLib.SparseMatrix(1, connections.Count);
-            for (var i = 0; i < connections.Count; i++)
-            {
-                for (var j = 0; j < connections.Count; j++)
-                {
-                    var sumResists = 0.0;
-                    foreach (var component in connections[i].GetConnectedComponents())
-                    {
-                        if (i == j) sumResists += 1.0/component.GetResistance();
-                        else if ((component.Top.GetConnection() == connections[i] &&
-                                  component.Bottom.GetConnection() == connections[j]) ||
-                                 (component.Top.GetConnection() == connections[j] &&
-                                  component.Bottom.GetConnection() == connections[i]))
-                        {
-                            sumResists += 1.0 / component.GetResistance();
-                        }
-                    }
-                    gMatrix[i, j] = sumResists;
-                }
-            }
+            /*
+            var AMatrix = CreateAMatrix(Connections(), VoltageSources());
+            var XMatrix = CreateXMatrix(Connections(), VoltageSources());
+            var ZMatrix = CreateZMatrix(Connections(), VoltageSources());
+            var r = StarMath.solve(AMatrix, ZMatrix.ConvertSparseToDenseMatrix().GetColumn(0));
+            */
         }
 
-        public SparseMatrix CreateGMatrix(List<IConnection> connections)
+        private IList<IConnection> Connections()
         {
-            var gMatrix = new StarMathLib.SparseMatrix(connections.Count, connections.Count);
+            return _connections;
+        }
+
+        public double[,] CreateGMatrix(IList<IConnection> connections)
+        {
+            var gMatrix = new StarMathLib.SparseMatrix(connections.Count, connections.Count).ConvertSparseToDenseMatrix();
             for (var i = 0; i < connections.Count; i++)
             {
                 for (var j = 0; j < connections.Count; j++)
@@ -66,10 +56,10 @@ namespace didactic_palm_tree.Simulation
                     foreach (var component in connections[i].GetConnectedComponents())
                     {
                         if (i == j) sumResists += 1.0 / component.GetResistance();
-                        else if ((component.Top.GetConnection() == connections[i] &&
-                                  component.Bottom.GetConnection() == connections[j]) ||
-                                 (component.Top.GetConnection() == connections[j] &&
-                                  component.Bottom.GetConnection() == connections[i]))
+                        else if ((component.Top.Connection == connections[i] &&
+                                  component.Bottom.Connection == connections[j]) ||
+                                 (component.Top.Connection == connections[j] &&
+                                  component.Bottom.Connection == connections[i]))
                         {
                             sumResists += 1.0 / component.GetResistance();
                         }
@@ -80,21 +70,21 @@ namespace didactic_palm_tree.Simulation
             return gMatrix;
         }
 
-        public SparseMatrix CreateBMatrix(List<IConnection> connections, List<Battery> voltageSources)
+        public double[,] CreateBMatrix(IList<IConnection> connections, IList<IComponent> voltageSources)
         {
             
-            var bMatrix = new StarMathLib.SparseMatrix(voltageSources.Count, connections.Count);
-            for (var i = 0; i < voltageSources.Count; i++)
+            var bMatrix = new StarMathLib.SparseMatrix(connections.Count, voltageSources.Count).ConvertSparseToDenseMatrix();
+            for (var j = 0; j < voltageSources.Count; j++)
             {
-                for (var j = 0; j < connections.Count; j++)
+                for (var i = 0; i < connections.Count; i++)
                 {
                     var value = 0;
                     foreach (var source in voltageSources)
                     {
-                        if (source.Top.GetConnection() == connections[j])
+                        if (source.Top.Connection == connections[j])
                         {
                             value = 1;
-                        } else if (source.Bottom.GetConnection() == connections[j])
+                        } else if (source.Bottom.Connection == connections[j])
                         {
                             value = -1;
                         }
@@ -105,21 +95,21 @@ namespace didactic_palm_tree.Simulation
             return bMatrix;
         }
 
-        public SparseMatrix CreateCMatrix(List<IConnection> connections, List<Battery> voltageSources)
+        public double[,] CreateCMatrix(IList<IConnection> connections, IList<IComponent> voltageSources)
         {
             var cMatrix = CreateBMatrix(connections, voltageSources);
-            cMatrix.Transpose();
+            cMatrix = cMatrix.transpose();
             return cMatrix;
         }
 
-        public SparseMatrix CreateDMatrix(List<Battery> voltageSources)
+        public SparseMatrix CreateDMatrix(IList<IComponent> voltageSources)
         {
             return new SparseMatrix(voltageSources.Count, voltageSources.Count);
         }
 
-        public SparseMatrix CreateAMatrix(List<IConnection> connections, List<Battery> voltageSources)
+        public double[,] CreateAMatrix(IList<IConnection> connections, IList<IComponent> voltageSources)
         {
-            var aMatrix = new StarMathLib.SparseMatrix(connections.Count + voltageSources.Count, connections.Count + voltageSources.Count);
+            var aMatrix = new StarMathLib.SparseMatrix(connections.Count + voltageSources.Count, connections.Count + voltageSources.Count).ConvertSparseToDenseMatrix();
             var gMatrix = CreateGMatrix(connections);
             var bMatrix = CreateBMatrix(connections, voltageSources);
             var cMatrix = CreateCMatrix(connections, voltageSources);
@@ -135,22 +125,22 @@ namespace didactic_palm_tree.Simulation
                     }
                     else if(i < connections.Count && j >= connections.Count)
                     {
-                        aMatrix[i, j] = bMatrix[i, j - connections.Count + 1];
+                        aMatrix[i, j] = bMatrix[i, j - connections.Count];
                     }
                     else if(i >= connections.Count && j < connections.Count)
                     {
-                        aMatrix[i, j] = cMatrix[i - connections.Count + 1, j];
+                        aMatrix[i, j] = cMatrix[i - connections.Count, j];
                     }
                     else if(i >= connections.Count && j >= connections.Count)
                     {
-                        aMatrix[i, j] = dMatrix[i - connections.Count + 1, j - connections.Count + 1];
+                        aMatrix[i, j] = dMatrix[i - connections.Count, j - connections.Count];
                     }
                 }
             }
             return aMatrix;
         }
 
-        public SparseMatrix CreateIMatrix(List<IConnection> connections)
+        public SparseMatrix CreateIMatrix(IList<IConnection> connections)
         {
             var iMatrix = new SparseMatrix(connections.Count, 1);
             /*for (var i = 0; i < connections.Count; i++)
@@ -174,17 +164,17 @@ namespace didactic_palm_tree.Simulation
             return iMatrix;
         }
 
-        public SparseMatrix CreateEMatrix(List<Battery> voltageSources)
+        public double[,] CreateEMatrix(IList<IComponent> voltageSources)
         {
-            var eMatrix = new SparseMatrix(voltageSources.Count, 1);
+            var eMatrix = new SparseMatrix(voltageSources.Count, 1).ConvertSparseToDenseMatrix();
             for (var i = 0; i < voltageSources.Count; i++)
             {
-                eMatrix[i, 0] = voltageSources[i].Voltage;
+                eMatrix[i, 0] = voltageSources[i].GetVoltageDrop();
             }
             return eMatrix;
         }
 
-        public SparseMatrix CreateZMatrix(List<IConnection> connections, List<Battery> voltageSources)
+        public SparseMatrix CreateZMatrix(IList<IConnection> connections, IList<IComponent> voltageSources)
         {
             var iMatrix = CreateIMatrix(connections);
             var eMatrix = CreateEMatrix(voltageSources);
@@ -201,15 +191,15 @@ namespace didactic_palm_tree.Simulation
             return zMatrix;
         }
 
-        public SparseMatrix CreateXMatrix(List<IConnection> connections, List<Battery> voltageSources)
+        public SparseMatrix CreateXMatrix(IList<IConnection> connections, IList<IComponent> voltageSources)
         {
             var aMatrix = CreateAMatrix(connections, voltageSources);
             var zMatrix = CreateZMatrix(connections, voltageSources);
-            var xMatrix = aMatrix.ConvertSparseToDenseMatrix().inverse().ConvertDenseToSparseMatrix(0.0).multiply(zMatrix.ConvertSparseToDenseMatrix()).ConvertDenseToSparseMatrix();
+            var xMatrix = aMatrix.inverse().ConvertDenseToSparseMatrix(0.0).multiply(zMatrix.ConvertSparseToDenseMatrix()).ConvertDenseToSparseMatrix();
             return xMatrix;
         }
 
-        public SparseMatrix CreateVMatrix(List<IConnection> connections, SparseMatrix xMatrix)
+        public SparseMatrix CreateVMatrix(IList<IConnection> connections, SparseMatrix xMatrix)
         {
             var vMatrix = xMatrix;
             for (var i = 0; i < xMatrix.NumRows - connections.Count; i++)
@@ -236,13 +226,12 @@ namespace didactic_palm_tree.Simulation
 
         public void AddConnection(ITerminal top, ITerminal bottom)
         {
-            //top.Voltage = top.GetComponent().GetVoltageDrop() + bottom.GetComponent().GetVoltageDrop();
-            //bottom.Voltage = top.Voltage;
+            _connections.Add(new Connection(top, bottom));
         }
 
-        public IEnumerable<IComponent> VoltageSources()
+        public IList<IComponent> VoltageSources()
         {
-            return Components.Where(x => x.IsVoltageSource());
+            return Components.Where(x => x.IsVoltageSource()).ToList();
         } 
     }
 }

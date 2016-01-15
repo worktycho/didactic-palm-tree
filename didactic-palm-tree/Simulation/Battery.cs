@@ -27,12 +27,12 @@ namespace didactic_palm_tree.Simulation
         public double Voltage { get; set; } // Voltage getter setter
         public double GetResistance()
         {
-            throw new NotImplementedException();
+            return double.PositiveInfinity;
         }
 
         public bool IsVoltageSource()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Simulate()
