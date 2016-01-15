@@ -235,8 +235,7 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Top"
                        ScrollViewer="{Binding ElementName=DesignerScrollViewer}"
-                       Margin="0,5,25,0" 
-                       Style="{StaticResource ZoomBoxTemplate}"/>
+                       Margin="0,5,25,0" />
 
 
         </Grid>
