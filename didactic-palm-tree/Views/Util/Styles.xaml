@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:DiagramDesigner.Controls;assembly=DiagramDesigner">
 
-    <SolidColorBrush x:Key="ThemeColour" Color="DarkBlue" />
-    <SolidColorBrush x:Key="ThemeColour2" Color="LightBlue" />
+    <SolidColorBrush x:Key="ThemeColour" Color="#270995" />
+    <SolidColorBrush x:Key="ThemeColour2" Color="#c9e8fa" />
     <SolidColorBrush x:Key="ThemeColour3" Color="LightGoldenrodYellow" />
 
     <SolidColorBrush x:Key="FontColour" Color="White" />
