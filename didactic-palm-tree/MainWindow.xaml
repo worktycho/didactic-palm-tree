@@ -20,35 +20,34 @@
                     Command="{Binding DeleteSelectedItemsCommand}" />
     </Window.InputBindings>
 
-    <DockPanel Margin="0">
-        <ToolBar Height="35" DockPanel.Dock="Top">
+    <DockPanel Margin="0" Style="{StaticResource DockPanelTemplate}">
+        <ToolBar Height="35" DockPanel.Dock="Top" Style="{StaticResource ToolBarTemplate}">
             <Button ToolTip="New"
                     Content="New"
 					Margin="8,0,3,0"
-                    Command="{Binding CreateNewDiagramCommand}"/>
+                    Command="{Binding CreateNewDiagramCommand}"
+                    Style="{StaticResource ButtonTemplate}"/>
             <Button ToolTip="Save"
                     Content="Save"
                     Margin="8,0,3,0"
-                    Command="{Binding SaveDiagramCommand}" />
+                    Command="{Binding SaveDiagramCommand}"
+                    Style="{StaticResource ButtonTemplate}"/>
 
             <Label Margin="30,0,3,0"
                    VerticalAlignment="Center"
-                   Content="Saved Diagrams" />
+                   Content="Saved Diagrams"
+                   Style="{StaticResource LabelTemplate}"/>
             <ComboBox Margin="8,0,3,0"
                      Width="200"
                      ToolTip="Saved Diagrams"
                       SelectedItem="{Binding CurrentDiagramId}"
-                     ItemsSource="{Binding SavedDiagrams}"/>
+                     ItemsSource="{Binding SavedDiagrams}"
+                      Style="{StaticResource ComboBoxTemplate}"/>
             <Button ToolTip="Load Selected Diagram"
                     Content="Load"
                     Margin="8,0,3,0"
-                    Command="{Binding LoadDiagramCommand}"/>
-            <ProgressBar Margin="8,0,3,0"
-                         Visibility="{Binding Path=IsBusy, Converter={x:Static s:BoolToVisibilityConverter.Instance}}"
-                         IsIndeterminate="True"
-                         Width="150"
-                         Height="20"
-                         VerticalAlignment="Center" />
+                    Command="{Binding LoadDiagramCommand}"
+                    Style="{StaticResource ButtonTemplate}"/>
         </ToolBar>
 
         <Grid Margin="0,5,0,0">
@@ -65,12 +64,19 @@
 						  Width="3" />
 
             <!-- Diagram Control -->
-            <s:DiagramControl Grid.Column="1"
+            <local:DiagramControl Grid.Column="1"
                               DataContext="{Binding DiagramViewModel}"
                               Margin="3,1,0,0" />
+            
             <!-- ToolBox Control -->
             <local:ToolBoxControl Grid.Column="0"
                                   DataContext="{Binding ToolBoxViewModel}" />
+            <ProgressBar
+            	Visibility="{Binding IsBusy, Converter={x:Static s:BoolToVisibilityConverter.Instance}}"
+            	IsIndeterminate="True"
+            	Height="20"
+            	VerticalAlignment="Center" 
+            	Style="{StaticResource ProgressBarTemplate}" Grid.Column="1" Margin="13,-2,125.667,263"/>
         </Grid>
     </DockPanel>
 </Window>

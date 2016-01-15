@@ -24,7 +24,7 @@ namespace didactic_palm_tree.Views
             ToolBoxViewModel = new ToolBoxViewModel();
             DiagramViewModel = new DiagramViewModel();
 
-            DiagramViewModel.CreateNewDiagramCommand.Execute(null);
+            ExecuteCreateNewDiagramCommand(null);
 
             DiagramViewModel.Items.CollectionChanged += ItemsOnCollectionChanged;
 
@@ -148,6 +148,9 @@ namespace didactic_palm_tree.Views
             2. Create empty diagram ID
             3. Use DiagramViewModel.CreateNewDiagram.Execute(null) to create it
             */
+            ItemsToRemove = new List<SelectableDesignerItemViewModelBase>();
+            CurrentDiagramId = null;
+            DiagramViewModel.CreateNewDiagramCommand.Execute(null);
         }
 
         private void ExecuteSaveDiagramCommand(object parameter)
