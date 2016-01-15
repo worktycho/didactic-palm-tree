@@ -16,11 +16,15 @@ namespace didactic_palm_tree.UIModel
 
         public Voltmeter()
         {
-            
         }
         public override ComponentViewModel CreateViewModel(Diagram diagram, DiagramViewModel parent)
         {
             return new VoltmeterViewModel(diagram, parent, Left, Top) {Model = this};
+        }
+
+        public override void EnsureSimComponentExists(Diagram diagram)
+        {
+            this.SimComponent = new Simulation.Resistor(int.MaxValue, diagram.NetList);
         }
     }
 }

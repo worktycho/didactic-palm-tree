@@ -44,5 +44,10 @@ namespace UnitTests
         {
             throw new NotImplementedException();
         }
+
+        public override void EnsureSimComponentExists(Diagram diagram)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
